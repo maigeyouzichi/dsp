@@ -1,0 +1,15 @@
+server:
+  port: 8333
+
+dubbo:
+  registry:
+    timeout: 10000
+    address: zookeeper://101.133.163.204:2181
+  application:
+    name: dubbo-provider
+
+#\u8BBE\u7F6E\u5E94\u7528\u7684\u65E5\u5FD7\u7EA7\u522B
+logging:
+  path: D:\bmslog
+  level:
+    com.lz.dsp.dubbo: info

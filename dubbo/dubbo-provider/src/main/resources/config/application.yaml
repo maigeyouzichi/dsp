@@ -1,0 +1,12 @@
+server:
+  port: 8444
+
+dubbo:
+  registry:
+    timeout: 10000
+    address: zookeeper://101.133.163.204:2181
+  protocol:
+    port: 20800
+    name: dubbo
+  application:
+    name: dubbo-provider
