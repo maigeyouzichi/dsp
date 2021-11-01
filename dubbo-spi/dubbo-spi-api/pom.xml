@@ -4,18 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lz</groupId>
-        <artifactId>dsp</artifactId>
+        <artifactId>dubbo-spi</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>daily-test</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>dubbo-spi-api</artifactId>
     <properties>
         <java.version>1.8</java.version>
     </properties>
-    <modules>
-        <module>daily-test-simple</module>
-    </modules>
     <dependencies>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.7.3</version>
+        </dependency>
     </dependencies>
-
 </project>

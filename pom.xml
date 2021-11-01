@@ -50,6 +50,8 @@
     <modules>
         <module>dubbo</module>
         <module>java-spi</module>
+        <module>daily-test</module>
+        <module>dubbo-spi</module>
     </modules>
 
     <build>

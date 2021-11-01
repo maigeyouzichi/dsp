@@ -1,0 +1,2 @@
+human=com.lz.service.impl.HumamHelloService
+dog=com.lz.service.impl.DogHelloService
