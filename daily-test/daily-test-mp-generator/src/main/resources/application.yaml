@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    dynamic:
+      primary: yzs
+      datasource:
+        yzs:
+          type: com.zaxxer.hikari.HikariDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://{url}:3306/yzs_driver_safety?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&allowMultiQueries=true
+          username: {username}
+          password: {password}
+          hikari:
+            connection-timeout: 10000
+            connection-test-query: select now()
+            validation-timeout: 3000
+            min-idle: 2
+            max-pool-size: 50
+            is-auto-commit: true

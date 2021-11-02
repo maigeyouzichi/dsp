@@ -14,6 +14,7 @@
     </properties>
     <modules>
         <module>daily-test-simple</module>
+        <module>daily-test-mp-generator</module>
     </modules>
     <dependencies>
     </dependencies>
