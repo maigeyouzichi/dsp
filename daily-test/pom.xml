@@ -15,6 +15,7 @@
     <modules>
         <module>daily-test-simple</module>
         <module>daily-test-mp-generator</module>
+        <module>daily-test-hutool</module>
     </modules>
     <dependencies>
     </dependencies>
