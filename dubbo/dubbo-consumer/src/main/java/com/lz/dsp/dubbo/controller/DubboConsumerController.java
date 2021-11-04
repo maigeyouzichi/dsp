@@ -20,12 +20,12 @@ public class DubboConsumerController {
     @RequestMapping("/hello")
     public String hello() {
         String hello = helloService.sayHello("world");
-        System.out.println(helloService.sayHello("SnailClimb"));
+        System.out.println(hello);
         //测试日志打印存储
-        log.debug("log debug ...");
+        /*log.debug("log debug ...");
         log.info("log info ...");
         log.warn("log warning ...");
-        log.error("log error ...");
+        log.error("log error ...");*/
         return hello;
     }
 
