@@ -9,7 +9,7 @@ import lombok.SneakyThrows;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletOutputStream;
@@ -32,7 +32,7 @@ public class ExcelController {
      * 简单excel
      */
     @SneakyThrows
-    @RequestMapping("/export1")
+    @GetMapping("/export1")
     public void export1(HttpServletResponse response) {
         List<User> list = new ArrayList<>();
         list.add(new User("zhangsan0", "1231", new Date()));
@@ -88,7 +88,7 @@ public class ExcelController {
 
 
     @SneakyThrows
-    @RequestMapping("/export2")
+    @GetMapping("/export2")
     public void export2(HttpServletResponse response) {
         List<User> list = new ArrayList<>();
         list.add(new User("zhangsan0", "1231", new Date()));
