@@ -9,6 +9,10 @@
     </parent>
     <artifactId>lagou-service-common</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
