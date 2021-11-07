@@ -37,10 +37,10 @@ class DailyTestMpGeneratorApplicationTests {
         mpg.setGlobalConfig(gc);
         //2、设置数据源
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://{url}:3306/yzs_driver_safety?useSSL=false&useUnicode=true&characterEncoding = utf-8&serverTimezone=GMT%2B8");
+        dsc.setUrl("jdbc:mysql://localhost:3306/lagou?useSSL=false&useUnicode=true&characterEncoding = utf-8&serverTimezone=GMT%2B8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("{username}");
-        dsc.setPassword("{password}");
+        dsc.setUsername("root");
+        dsc.setPassword("root");
         dsc.setDbType(DbType.MYSQL);
         mpg.setDataSource(dsc);
         //3、包的配置
@@ -58,7 +58,7 @@ class DailyTestMpGeneratorApplicationTests {
         //4、策略配置
         StrategyConfig strategy = new StrategyConfig();
         // 设置要映射的表名
-        strategy.setInclude("user_comp_rel","user_role_rel","role","role_perm_rel","permission");
+        strategy.setInclude("r_resume");
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         // 自动lombok；

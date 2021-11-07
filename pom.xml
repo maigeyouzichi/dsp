@@ -6,7 +6,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.2.RELEASE</version>
-        <relativePath/>
     </parent>
     <groupId>com.lz</groupId>
     <artifactId>dsp</artifactId>
@@ -69,6 +68,7 @@
         <module>java-spi</module>
         <module>daily-test</module>
         <module>dubbo-spi</module>
+        <module>lagou-resume</module>
     </modules>
 
     <build>
