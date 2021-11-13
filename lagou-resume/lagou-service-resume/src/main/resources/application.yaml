@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   datasource:
     dynamic:
@@ -16,13 +18,25 @@ spring:
             min-idle: 2
             max-pool-size: 50
             is-auto-commit: true
+  application:
+    name: lagou-service-resume
 
 mybatis-plus:
-  executor-type: batch # \u6B64\u914D\u7F6E\u4EC5\u9488\u5BF9SqlSessionTemplate
+  executor-type: batch # batch执行器
   mapper-locations: "classpath:META-INF/mapper/*Mapper.xml"
   configuration:
-    default-executor-type: simple # \u6B64\u914D\u7F6E\u4E3A\u9ED8\u8BA4\u914D\u7F6E
-    # \u8FD9\u4E2A\u914D\u7F6E\u4F1A\u5C06\u6267\u884C\u7684sql\u6253\u5370\u51FA\u6765\uFF0C\u5728\u5F00\u53D1\u6216\u6D4B\u8BD5\u7684\u65F6\u5019\u53EF\u4EE5\u7528
+    default-executor-type: simple # 默认配置
+    # 打印Sql
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     banner: false
+
+#注册到Eureka服务中心
+eureka:
+  client:
+    service-url:
+      #注册到集群, 逗号拼接
+      defaultZone: http://EurekaServerA:8761/eureka,http://EurekaServerB:8762/eureka
+  instance:
+    prefer-ip-address: true #服务实例中显示ip,而不是主机名
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@ #实例名称,支持自定义

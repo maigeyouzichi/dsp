@@ -14,6 +14,11 @@
             <artifactId>lagou-service-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--Eureka客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
