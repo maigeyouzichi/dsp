@@ -3,7 +3,7 @@ server:
 spring:
   application:
     name: lagou-cloud-eureka-server #应用名称, 会在eureka中作为服务名称
-    # eureka 客户端配置,和server交互, Eureka Server 起始也是一个Client
+    # eureka 客户端配置,和server交互, Eureka Server 其实也是一个Client
 eureka:
   instance:
     hostname: EurekaServerA #当前实例的主机名

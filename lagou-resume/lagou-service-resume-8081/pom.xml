@@ -7,12 +7,33 @@
         <artifactId>lagou-resume</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>lagou-service-autodeliver</artifactId>
+    <artifactId>lagou-service-resume-8081</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.lz</groupId>
             <artifactId>lagou-service-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>protobuf-java</artifactId>
+                    <groupId>com.google.protobuf</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.3</version>
         </dependency>
     </dependencies>
 

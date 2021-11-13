@@ -1,0 +1,45 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    dynamic:
+      primary: local
+      datasource:
+        local:
+          type: com.zaxxer.hikari.HikariDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/lagou?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&allowMultiQueries=true
+          username: root
+          password: root
+          hikari:
+            connection-timeout: 10000
+            connection-test-query: select now()
+            validation-timeout: 3000
+            min-idle: 2
+            max-pool-size: 50
+            is-auto-commit: true
+  application:
+    name: lagou-service-resume
+
+mybatis-plus:
+  executor-type: batch # batch执行器
+  mapper-locations: "classpath:META-INF/mapper/*Mapper.xml"
+  configuration:
+    default-executor-type: simple # 默认配置
+    # 打印Sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+
+#注册到Eureka服务中心
+eureka:
+  client:
+    service-url:
+      #注册到集群, 逗号拼接
+      defaultZone: http://EurekaServerA:8761/eureka,http://EurekaServerB:8762/eureka
+  instance:
+    prefer-ip-address: true #服务实例中显示ip,而不是主机名
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@ #实例名称,支持自定义
+    metadata-map:
+      hello: world
+      isBool: true

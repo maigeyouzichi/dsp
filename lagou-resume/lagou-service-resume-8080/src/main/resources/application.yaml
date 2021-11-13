@@ -40,3 +40,6 @@ eureka:
   instance:
     prefer-ip-address: true #服务实例中显示ip,而不是主机名
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@ #实例名称,支持自定义
+    metadata-map:
+      hello: world
+      isBool: true
