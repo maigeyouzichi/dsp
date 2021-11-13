@@ -2,6 +2,7 @@ package com.lz;
 
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
+import com.lz.enums.AlarmTypeEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -36,5 +37,16 @@ class DailyTestHutoolApplicationTests {
     void test002() {
         long[] longs = new long[4];
         System.out.println(Arrays.toString(longs));
+    }
+
+    @Test
+    void test003() {
+        System.out.println(AlarmTypeEnum.OVER_SPEED.name());
+        System.out.println(AlarmTypeEnum.OVER_SPEED.toString());
+        System.out.println(AlarmTypeEnum.OVER_SPEED.getValue());
+
+        AlarmTypeEnum over_speed = AlarmTypeEnum.valueOf("OVER_SPEED");
+        String value = over_speed.getValue();
+        System.out.println(value);
     }
 }

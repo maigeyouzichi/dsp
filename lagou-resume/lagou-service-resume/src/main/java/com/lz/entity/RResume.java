@@ -22,7 +22,6 @@ import java.time.LocalDateTime;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="RResume对象", description="")
 public class RResume implements Serializable {
 
     private static final long serialVersionUID = 1L;

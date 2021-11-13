@@ -2,8 +2,11 @@ package com.lz;
 
 import cn.hutool.json.JSONConfig;
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lz.entity.Cat;
 import com.lz.entity.Dog;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +35,28 @@ class DailyTestSimpleApplicationTests {
         System.out.println(JSONUtil.toJsonStr(JSONUtil.wrap(cat, jsonConfig)));
     }
 
+    @Test
+    void test002() {
+        long hour = 19;
+        System.out.println(hour/24);
+        System.out.println(hour%24);
+    }
+
+    @Test
+    void test003() {
+        Dog dog = new Dog();
+        String string = "{\"name\":\"\",\"birthday\":0}";
+        Dog dog1 = JSON.parseObject(string, Dog.class);
+        System.out.println(JSON.toJSONString(dog1));
+    }
+
+    @SneakyThrows
+    @Test
+    void test004() {
+        Dog dog = new Dog();
+        String string = "{\"name\":\"\",\"birthday\":0}";
+        ObjectMapper mapper = new ObjectMapper();
+        Dog dog1 = mapper.readValue(string, Dog.class);
+        System.out.println(JSON.toJSONString(dog1));
+    }
 }
