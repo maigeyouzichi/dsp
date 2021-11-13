@@ -7,7 +7,7 @@
         <artifactId>lagou-resume</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>lagou-cloud-eureka-server-8761</artifactId>
+    <artifactId>lagou-cloud-eureka-server-8762</artifactId>
     <dependencies>
         <!--Eureka Server-->
         <dependency>

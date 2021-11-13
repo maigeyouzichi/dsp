@@ -14,6 +14,7 @@
         <module>lagou-service-autodeliver</module>
         <module>lagou-service-resume</module>
         <module>lagou-cloud-eureka-server-8761</module>
+        <module>lagou-cloud-eureka-server-8762</module>
     </modules>
 
 
@@ -29,6 +30,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-commons</artifactId>
+            <version>2.2.2.RELEASE</version>
         </dependency>
     </dependencies>
 
