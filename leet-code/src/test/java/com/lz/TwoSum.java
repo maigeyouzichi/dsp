@@ -16,16 +16,16 @@ import java.util.HashMap;
  * 链接：https://leetcode-cn.com/problems/two-sum
  */
 @SpringBootTest
-public class TwoSum {
+class TwoSum {
 
     @Test
-    public void test() {
+    void test() {
         int[] arr = new int[]{2,7,11,15};
         int[] res = twoSum(arr, 9);
         System.out.println(Arrays.toString(res));
     }
 
-    public int[] twoSum(int[] nums, int target) {
+    private int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int a = nums[i];
