@@ -15,3 +15,8 @@ eureka:
     prefer-ip-address: true #服务实例中显示ip,而不是主机名
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@ #实例名称,支持自定义
 
+#针对的被调⽤⽅微服务名称,不加就是全局⽣效 (服务名需要大写, 小写不生效)
+LAGOU-SERVICE-RESUME:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #负载策略调整
+
