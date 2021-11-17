@@ -79,6 +79,7 @@
         <module>daily-test</module>
         <module>dubbo-spi</module>
         <module>lagou-resume</module>
+        <module>leet-code</module>
     </modules>
 
     <build>
