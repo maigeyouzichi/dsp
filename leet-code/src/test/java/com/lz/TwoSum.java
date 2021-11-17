@@ -1,9 +1,7 @@
 package com.lz;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -15,14 +13,11 @@ import java.util.HashMap;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/two-sum
  */
-@SpringBootTest
 class TwoSum {
 
     @Test
     void test() {
-        int[] arr = new int[]{2,7,11,15};
-        int[] res = twoSum(arr, 9);
-        System.out.println(Arrays.toString(res));
+
     }
 
     private int[] twoSum(int[] nums, int target) {
