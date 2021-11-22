@@ -1,5 +1,6 @@
 package com.lz;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.CharUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONConfig;
@@ -19,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -78,6 +80,7 @@ class DailyTestSimpleApplicationTests {
 
     /**
      * 两数相加
+     *
      * @param l1 链表节点1
      * @param l2 链表节点2
      * @return 链表节点
@@ -115,18 +118,18 @@ class DailyTestSimpleApplicationTests {
         ListNode res = new ListNode();
         ListNode cur = res;
         int carry = 0;
-        while (l1 != null || l2 != null ) {
-            int a = l1!=null?l1.val:0;
-            int b = l2!=null?l2.val:0;
+        while (l1 != null || l2 != null) {
+            int a = l1 != null ? l1.val : 0;
+            int b = l2 != null ? l2.val : 0;
             int sum = carry + a + b;
-            carry = sum/10;
-            int val = sum%10;
+            carry = sum / 10;
+            int val = sum % 10;
             cur.next = new ListNode(val);
             cur = cur.next;
-            if (l1!=null) l1 = l1.next;
-            if (l2!=null) l2 = l2.next;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
         }
-        if (carry ==1) cur.next = new ListNode(1);
+        if (carry == 1) cur.next = new ListNode(1);
         return res.next;
     }
 
@@ -136,13 +139,15 @@ class DailyTestSimpleApplicationTests {
         System.out.println(s);
     }
 
-    /**逗号拼接车牌*/
+    /**
+     * 逗号拼接车牌
+     */
     private String buildVclNsBySubVehiclePlates(List<String> subVehiclePlates) {
         StringBuilder builder = new StringBuilder();
         for (String plate : subVehiclePlates) {
             builder.append(plate).append(CharUtil.COMMA);
         }
-        return StrUtil.subPre(builder.toString(),-1);
+        return StrUtil.subPre(builder.toString(), -1);
     }
 
     /**
@@ -153,11 +158,28 @@ class DailyTestSimpleApplicationTests {
         int[] array1 = {1, 2};
         int[] array2 = {3, 4};
         int[] array3 = {5, 6};
-        int[][] ints = {array1,array2,array3};
+        int[][] ints = {array1, array2, array3};
         for (int[] anInt : ints) {
             System.out.println(Arrays.toString(anInt));
         }
 
         System.out.println(ints[0][1]);
+    }
+
+
+    @Test
+    public void testColl() {
+
+        List<String> objects = Lists.newArrayList();
+        for (int i = 0; i < 70; i++) {
+            objects.add("hello");
+        }
+        for (int i = 0; i < objects.size(); i = i + 50) {
+            int end = (i + 50) > objects.size() ? objects.size() : (i + 50);
+            List<String> subVehiclePlates = objects.subList(i, end);
+            System.out.println(subVehiclePlates);
+            Collection<String> subtract = CollUtil.subtract(Lists.newArrayList(subVehiclePlates), Lists.newArrayList("wo", "ld"));
+            System.out.println(subtract);
+        }
     }
 }
