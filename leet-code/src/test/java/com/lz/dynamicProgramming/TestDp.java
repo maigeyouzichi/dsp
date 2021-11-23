@@ -12,8 +12,8 @@ public class TestDp {
 
     @Test
     void test() {
-        int i = function001(1);
-        System.out.println(i);
+        int j = function004("hello","kitty");
+        System.out.println(j);
     }
 
     /**
@@ -88,5 +88,39 @@ public class TestDp {
             }
         }
         return dp[m-1][n-1];
+    }
+
+    /**
+     * 编辑距离: wordA -> wordB 需要的最少步骤
+     * dp[i][j]:长度为i字符串转换为长度为j的字符串需要的最少步骤
+     *
+     * 总结下目前的解题思路:
+     * 1, 定义dp[i][j]的含义
+     * 2, 确定存储中间数据的数组,大部分是二维数组
+     * 3, 确定初始值
+     * 4, 确定i=0 或者 j=0 时的边界数据
+     * 5, 找出dp[i][j]与dp[i-1][j-1],dp[i-1][j],dp[i][j-1]的关系
+     */
+    int function004(String wordA,String wordB) {
+        int i = wordA.length();
+        int j = wordB.length();
+        if (i==0 || j==0) {return i+j;}
+        int[][] dp = new int[i+1][j+1];
+        for (int k = 1; k <= i; k++) {
+            dp[k][0] = k;
+        }
+        for (int k = 1; k <= j; k++) {
+            dp[0][k] = k;
+        }
+        for (int k = 1; k <= i; k++) {
+            for (int l = 1; l <= j; l++) {
+                if (wordA.charAt(k-1) == wordB.charAt(l-1)) {
+                    dp[k][l] = dp[k-1][l-1];
+                }else {
+                    dp[k][l] = Math.min(Math.min(dp[k-1][l],dp[k][l-1]),dp[k-1][l-1])+1;
+                }
+            }
+        }
+        return dp[i][j];
     }
 }
