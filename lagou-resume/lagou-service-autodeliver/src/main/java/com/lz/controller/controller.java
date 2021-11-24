@@ -1,5 +1,7 @@
 package com.lz.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,6 +66,24 @@ public class controller {
         return status;
     }
 
+    /**
+     * 提供者模拟处理超时,调用方法添加Hystrix
+     * {@code @HystrixCommand 扫描注解,进行切面}
+     * @return
+     */
+    @HystrixCommand(
+            //熔断细节属性配置 每一个属性都是一个HystrixProperty
+            commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "2000")
+            }
+    )
+    @GetMapping("/check-state-timeout/{userId}")
+    public Integer findResumeOpenStateTimeOut(@PathVariable Long userId) {
+        //不需要自己获取服务实例然后选择一个去访问,只需要指定服务名
+        String url = "http://LAGOU-SERVICE-RESUME/resume/open-state/"+userId;
+        Integer status = restTemplate.getForObject(url, Integer.class);
+        return status;
+    }
 
 
 }

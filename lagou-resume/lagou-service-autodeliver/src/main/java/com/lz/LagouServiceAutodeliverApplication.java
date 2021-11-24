@@ -2,11 +2,14 @@ package com.lz;
 
 import com.netflix.loadbalancer.RoundRobinRule;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.SpringCloudApplication;
 
-@SpringBootApplication
-@EnableDiscoveryClient
+/**
+ * {@code @SpringCloudApplication 通用application,包括了@SpringBootApplication,@EnableDiscoveryClient,@EnableCircuitBreaker}
+ * {@code @EnableHystrix 开启hystrix}
+ * {@code @EnableCircuitBreaker 通用断路器,可替代hystrix}
+ */
+@SpringCloudApplication
 public class LagouServiceAutodeliverApplication {
 
     public static void main(String[] args) {
