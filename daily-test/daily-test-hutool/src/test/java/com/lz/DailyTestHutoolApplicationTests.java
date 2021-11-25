@@ -49,4 +49,14 @@ class DailyTestHutoolApplicationTests {
         String value = over_speed.getValue();
         System.out.println(value);
     }
+
+    /**
+     * 测试随机数
+     */
+    @Test
+    void test004() {
+        for (int i = 0; i < 30; i++) {
+            System.out.println(Math.round(Math.random()*50));
+        }
+    }
 }
