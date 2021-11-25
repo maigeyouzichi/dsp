@@ -52,6 +52,7 @@ class DailyTestHutoolApplicationTests {
 
     /**
      * 测试随机数
+     * hello
      */
     @Test
     void test004() {
