@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * LeetCode上的动态规划
+ *
  * @author lihao
  * @date 2021-11-24 14:21
  */
@@ -26,16 +27,16 @@ public class DpOnLeetCode {
      * dp[i]表示以第i个数结尾的连续数组最大和,我们需要求出最大的dp[i]
      * 这个题目不是很符合一般的动态规划的套路,没有使用数据存储中间值,不是常规思维
      * 从左向右遍历,左索引为0,右索引为i,这段数值相加为正数就保留,为负数直接全部舍弃.会出现新的左索引.
-     *
+     * <p>
      * 真的难,感觉已经是思维极限了. ORZ ...
      */
     int function001(int[] nums) {
-        if (nums.length ==0) return 0;
+        if (nums.length == 0) return 0;
         int pre = 0;
         int result = nums[0];
         for (int i = 0; i < nums.length; i++) {
-            pre = Math.max(pre+nums[i],nums[i]);
-            result = Math.max(pre,result);
+            pre = Math.max(pre + nums[i], nums[i]);
+            result = Math.max(pre, result);
         }
         return result;
     }
@@ -49,22 +50,25 @@ public class DpOnLeetCode {
      * dp[i] = dp[i-1] + dp[i-2]
      */
     int function002(int n) {
-        if (n==1 || n==2 || n==3) {return n;}
+        if (n == 1 || n == 2 || n == 3) {
+            return n;
+        }
         int[] dp = new int[n + 1];
         for (int i = 1; i < 4; i++) {
             dp[i] = i;
         }
         for (int i = 4; i < n + 1; i++) {
-            dp[i] = dp[i-1]+dp[i-2];
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
         return dp[n];
     }
 
 
     @Test
-    void test001 () {
+    void test001() {
         System.out.println(generate(5));
     }
+
     /**
      * 118. 杨辉三角
      * 给定一个非负整数 numRows，生成「杨辉三角」的前 numRows 行。
@@ -78,10 +82,10 @@ public class DpOnLeetCode {
         for (int i = 0; i < numRows; i++) {
             List<Integer> tmp = new ArrayList<>();
             for (int j = 0; j <= i; j++) {
-                if (j==0 || j==i) {
+                if (j == 0 || j == i) {
                     tmp.add(1);
                 } else {
-                    tmp.add(result.get(i-1).get(j-1)+result.get(i-1).get(j));
+                    tmp.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
                 }
             }
             result.add(tmp);
@@ -107,10 +111,10 @@ public class DpOnLeetCode {
         int[][] dp = new int[rowIndex + 1][rowIndex + 1];
         for (int i = 0; i <= rowIndex; i++) {
             for (int j = 0; j <= i; j++) {
-                if (j==0 || i==j) {
+                if (j == 0 || i == j) {
                     dp[i][j] = 1;
-                }else {
-                    dp[i][j] = dp[i-1][j] + dp[i-1][j-1];
+                } else {
+                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
                 }
                 if (i == rowIndex) {
                     result.add(dp[i][j]);
@@ -120,6 +124,38 @@ public class DpOnLeetCode {
         return result;
     }
 
+    /**
+     * 121. 买卖股票的最佳时机
+     * 给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。
+     * 你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。
+     * 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock
+     * 思路: 不要局限在动态规划的套路中, 有些题目不是百分百满足动态规划的
+     */
+    int maxProfit(int[] prices) {
+        //最低价格
+        int low = Integer.MAX_VALUE;
+        //利润
+        int p = 0;
+        for (int i = 0; i <prices.length; i++) {
+            if (prices[i]<low) {
+                low = prices[i];
+            }else if (prices[i]-low > p) {
+                p = prices[i]-low;
+            }
+        }
+        return p;
+    }
+    int maxProfit02(int[] prices) {
+        int min = Integer.MAX_VALUE;
+        int max = 0;
+        for (int price : prices) {
+            max = Math.max(max,price-min);
+            min = Math.min(min,price);
+        }
+        return max;
+    }
 
 
 }
