@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * LeetCode上的动态规划
  * 难度简单
+ *
  * @author lihao
  * @date 2021-11-24 14:21
  */
@@ -62,7 +63,7 @@ public class DynamicProgrammingSimple {
 
     @Test
     void test001() {
-        System.out.println(4<<1);
+        System.out.println(4 << 1);
     }
 
     /**
@@ -134,21 +135,22 @@ public class DynamicProgrammingSimple {
         int low = Integer.MAX_VALUE;
         //利润
         int p = 0;
-        for (int i = 0; i <prices.length; i++) {
-            if (prices[i]<low) {
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < low) {
                 low = prices[i];
-            }else if (prices[i]-low > p) {
-                p = prices[i]-low;
+            } else if (prices[i] - low > p) {
+                p = prices[i] - low;
             }
         }
         return p;
     }
+
     int maxProfit02(int[] prices) {
         int min = Integer.MAX_VALUE;
         int max = 0;
         for (int price : prices) {
-            max = Math.max(max,price-min);
-            min = Math.min(min,price);
+            max = Math.max(max, price - min);
+            min = Math.min(min, price);
         }
         return max;
     }
@@ -157,18 +159,42 @@ public class DynamicProgrammingSimple {
      * 338. 比特位计数
      * 给你一个整数 n ，对于 0 <= i <= n 中的每个 i ，计算其二进制表示中 1 的个数 ，返回一个长度为 n + 1 的数组 ans 作为答案
      * 解读: 如果i为奇数 : dp[i] = dp[i-1]+1,因为奇数比偶数多了一个最后的1,其余都一样.
-     *      如果i为偶数 : dp[i] = dp[i/2],因为任何数x2都是在最后加一个0
+     * 如果i为偶数 : dp[i] = dp[i/2],因为任何数x2都是在最后加一个0
      */
     int[] countBits(int n) {
         int[] dp = new int[n + 1];
         for (int i = 0; i <= n; i++) {
-            if (i%2 == 0) {
-                dp[i] = dp[i>>1];
-            }else {
-                dp[i] = dp[i-1]+1;
+            if (i % 2 == 0) {
+                dp[i] = dp[i >> 1];
+            } else {
+                dp[i] = dp[i - 1] + 1;
             }
         }
         return dp;
+    }
+
+    /**
+     * 392. 判断子序列
+     * 给定字符串 s 和 t ，判断 s 是否为 t 的子序列。
+     * 思路: dp[i]记录着s串的第i-1次遍历时即第i-1个字符在t串的位置数+1,同时设置标记,如果某一次没有发现t串中存在相同的字符,直接返回错误.
+     */
+    boolean isSubsequence(String s, String t) {
+        if (s.length() > t.length()) return false;
+        int[] dp = new int[s.length()+1];
+        boolean flag = true;
+        out:
+        for (int i = 0; i < s.length(); i++) {
+            if (!flag) return false;
+            flag = false;
+            for (int j = dp[i]; j < t.length(); j++) {
+                if (s.charAt(i) == t.charAt(j)) {
+                    dp[i+1] = j+1;
+                    flag = true;
+                    continue out;
+                }
+            }
+        }
+        return flag;
     }
 
 }
