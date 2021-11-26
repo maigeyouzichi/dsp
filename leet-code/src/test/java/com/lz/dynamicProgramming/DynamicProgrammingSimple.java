@@ -7,15 +7,11 @@ import java.util.List;
 
 /**
  * LeetCode上的动态规划
- *
+ * 难度简单
  * @author lihao
  * @date 2021-11-24 14:21
  */
-public class DpOnLeetCode {
-
-    /**
-     * 难度:简单  ----------------------------------------------------
-     */
+public class DynamicProgrammingSimple {
 
     /**
      * 53. 最大子序和
@@ -28,7 +24,7 @@ public class DpOnLeetCode {
      * 这个题目不是很符合一般的动态规划的套路,没有使用数据存储中间值,不是常规思维
      * 从左向右遍历,左索引为0,右索引为i,这段数值相加为正数就保留,为负数直接全部舍弃.会出现新的左索引.
      * <p>
-     * 真的难,感觉已经是思维极限了. ORZ ...
+     * 这个题目和股票最佳抛售时间一样,复杂度都是o(n),一次遍历,再计算和的时候,负数可以直接省去,用一个变量记录历史最大值,即为结果.
      */
     int function001(int[] nums) {
         if (nums.length == 0) return 0;
@@ -66,7 +62,7 @@ public class DpOnLeetCode {
 
     @Test
     void test001() {
-        System.out.println(generate(5));
+        System.out.println(4<<1);
     }
 
     /**
@@ -157,5 +153,22 @@ public class DpOnLeetCode {
         return max;
     }
 
+    /**
+     * 338. 比特位计数
+     * 给你一个整数 n ，对于 0 <= i <= n 中的每个 i ，计算其二进制表示中 1 的个数 ，返回一个长度为 n + 1 的数组 ans 作为答案
+     * 解读: 如果i为奇数 : dp[i] = dp[i-1]+1,因为奇数比偶数多了一个最后的1,其余都一样.
+     *      如果i为偶数 : dp[i] = dp[i/2],因为任何数x2都是在最后加一个0
+     */
+    int[] countBits(int n) {
+        int[] dp = new int[n + 1];
+        for (int i = 0; i <= n; i++) {
+            if (i%2 == 0) {
+                dp[i] = dp[i>>1];
+            }else {
+                dp[i] = dp[i-1]+1;
+            }
+        }
+        return dp;
+    }
 
 }
