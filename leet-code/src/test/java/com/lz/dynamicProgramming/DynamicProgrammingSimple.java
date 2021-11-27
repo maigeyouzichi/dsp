@@ -332,4 +332,26 @@ public class DynamicProgrammingSimple {
         return dp[k][n-1];
     }
 
+    /**
+     * LCS 01. 下载插件
+     * 小扣打算给自己的 VS code 安装使用插件，初始状态下带宽每分钟可以完成 1 个插件的下载。假定每分钟选择以下两种策略之一:
+     * 使用当前带宽下载插件
+     * 将带宽加倍（下载插件数量随之加倍）
+     * 请返回小扣完成下载 n 个插件最少需要多少分钟。
+     * 注意：实际的下载的插件数量可以超过 n 个
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/Ju9Xwi
+     * 思路: 如果一分钟下不完全部,就选择加倍
+     */
+    int leastMinutes(int n) {
+        int speed = 1;
+        int time = 0;
+        while (speed < n) {
+            speed = speed << 1;
+            time ++;
+        }
+        return time +1;
+    }
+
 }
