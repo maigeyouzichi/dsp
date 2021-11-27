@@ -176,7 +176,8 @@ public class DynamicProgrammingSimple {
     /**
      * 392. 判断子序列
      * 给定字符串 s 和 t ，判断 s 是否为 t 的子序列。
-     * 思路: dp[i]记录着s串的第i-1次遍历时即第i-1个字符在t串的位置数+1,同时设置标记,如果某一次没有发现t串中存在相同的字符,直接返回错误.
+     * 思路: dp[i]记录着s串的第i-1次遍历时即第i-1个字符在t串的位置数+1,同时设置标记,
+     * 如果某一次没有发现t串中存在相同的字符,直接返回错误.
      */
     boolean isSubsequence(String s, String t) {
         if (s.length() > t.length()) return false;
@@ -418,5 +419,33 @@ public class DynamicProgrammingSimple {
             dp[i] = Math.max(dp[i-2]+nums[i],dp[i-1]);
         }
         return dp[nums.length-1];
+    }
+
+    /**
+     * 面试题 05.03. 翻转数位
+     * 给定一个32位整数 num，你可以将一个数位从0变为1。请编写一个程序，找出你能够获得的最长的一串1的长度。
+     * 思路: 通过位运算,实现遍历num每一位的效果,临时临时变量记录每段连续1的长度.
+     */
+    int reverseBits(int num) {
+        int max = 0;int tmp =0; int len = 0;
+        for (int i = 0; i < 32; i++) {
+            if ((num & 1) ==1) {
+                tmp++;
+                len++;
+            }else {
+                len = tmp +1;
+                tmp = 0;
+            }
+            num >>=1;
+            max = Math.max(max,len);
+        }
+        return max;
+    }
+
+    @Test
+    public void test002(){
+        int m = 4;
+        m >>>= 1;
+        System.out.println(m);
     }
 }
