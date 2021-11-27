@@ -382,4 +382,18 @@ public class DynamicProgrammingSimple {
         return dp[n];
     }
 
+    /**
+     * 面试题 16.17. 连续数列
+     * 给定一个整数数组，找出总和最大的连续数列，并返回总和
+     * 重复题目
+     */
+    int maxSubArray(int[] nums) {
+        int max = nums[0];
+        int sum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            sum = Math.max(sum + nums[i] ,nums[i]);
+            max = Math.max(max,sum);
+        }
+        return max;
+    }
 }
