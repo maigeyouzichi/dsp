@@ -1,0 +1,16 @@
+
+1,健康检查JSON -- 针对项目中全部指标
+http://localhost:8090/actuator/health
+
+2,hystrix监控数据流 -- 针对项目中hystrix相关指标
+http://localhost:8090/actuator/hystrix.stream
+
+3,hystrix集群监控数据流(独立部署)--只需要连接注册中心并指定需要聚合的服务
+http://localhost:9001/turbine.stream
+
+4,hystrix控制台(独立部署) -- 数据流可视化平台
+http://localhost:9000/hystrix
+
+5, eureka控制台
+http://eurekaservera:8761/
+http://eurekaservera:8762/
