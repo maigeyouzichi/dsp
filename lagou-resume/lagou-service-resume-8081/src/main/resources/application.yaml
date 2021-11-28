@@ -1,5 +1,4 @@
-server:
-  port: 8081
+
 spring:
   datasource:
     dynamic:
@@ -43,3 +42,5 @@ eureka:
     metadata-map:
       hello: world
       isBool: true
+server:
+  port: 8081

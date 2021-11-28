@@ -1,5 +1,4 @@
-server:
-  port: 9000
+
 Spring:
   application:
     name: lagou-cloud-hystrix-dashboard
@@ -14,3 +13,5 @@ eureka:
     prefer-ip-address: true
     #⾃定义实例显示格式，加上版本号，便于多版本管理，注意是ip-address，早期版本是ipAddress
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+server:
+  port: 9000

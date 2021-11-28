@@ -43,3 +43,4 @@ eureka:
     metadata-map:
       hello: world
       isBool: true
+
