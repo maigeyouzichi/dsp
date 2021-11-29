@@ -29,6 +29,6 @@ Spring:
           #http://127.0.0.1:8081/openstate/1545132
           predicates: # \u65AD\u2F94\uFF1A\u8DEF\u7531\u6761\u4EF6\uFF0CPredicate \u63A5\u53D7\u2F00\u4E2A\u8F93\u2F0A\u53C2\u6570\uFF0C\u8FD4\u56DE\u2F00\u4E2A\u5E03\u5C14\u503C\u7ED3\u679C\u3002\u8BE5\u63A5\u2F1D\u5305\u542B\u591A\u79CD\u9ED8 \u8BA4\u2F45\u6CD5\u6765\u5C06Predicate \u7EC4\u5408\u6210\u5176\u4ED6\u590D\u6742\u7684\u903B\u8F91\uFF08\u2F50\u5982\uFF1A\u4E0E\uFF0C\u6216\uFF0C\u2FAE\uFF09\u3002
             - Path=/resume/**
-          filters:
-            - StripPrefix=1
+#          filters:
+#            - StripPrefix=1
 
