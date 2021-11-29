@@ -1,6 +1,7 @@
 package com.lz.controller;
 
 import com.lz.service.AutoDeliverService;
+import com.lz.service.ResumeServiceFeignClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.SneakyThrows;
@@ -28,6 +29,9 @@ public class controller {
 
     @Autowired
     private AutoDeliverService autoDeliverService;
+
+    @Autowired
+    private ResumeServiceFeignClient feignClient;
 
     /*@GetMapping("/check-state/{userId}")
     public Integer findResumeOpenState(@PathVariable Long userId) {
@@ -68,9 +72,10 @@ public class controller {
     @GetMapping("/check-state/{userId}")
     public Integer findResumeOpenState(@PathVariable Long userId) {
         //不需要自己获取服务实例然后选择一个去访问,只需要指定服务名
-        String url = "http://LAGOU-SERVICE-RESUME/resume/open-state/"+userId;
+        /*String url = "http://LAGOU-SERVICE-RESUME/resume/open-state/"+userId;
         Integer status = restTemplate.getForObject(url, Integer.class);
-        return status;
+        return status;*/
+        return feignClient.findDefaultResumeState(userId);
     }
 
     /**

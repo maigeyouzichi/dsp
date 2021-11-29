@@ -3,6 +3,7 @@ package com.lz;
 import com.netflix.loadbalancer.RoundRobinRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * {@code @SpringCloudApplication 通用application,包括了@SpringBootApplication,@EnableDiscoveryClient,@EnableCircuitBreaker}
@@ -10,6 +11,7 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * {@code @EnableCircuitBreaker 通用断路器,可替代hystrix}
  */
 @SpringCloudApplication
+@EnableFeignClients
 public class LagouServiceAutodeliverApplication8090 {
 
     public static void main(String[] args) {

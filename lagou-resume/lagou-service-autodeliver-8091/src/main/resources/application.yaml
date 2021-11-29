@@ -13,9 +13,9 @@ eureka:
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@ #实例名称,支持自定义
 
 #针对的被调⽤⽅微服务名称,不加就是全局⽣效 (服务名需要大写, 小写不生效)
-LAGOU-SERVICE-RESUME:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #负载策略调整
+#LAGOU-SERVICE-RESUME:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #负载策略调整
 
 # springboot中暴露健康检查等断点接⼝
 management:
@@ -29,3 +29,47 @@ management:
       show-details: always
 server:
   port: 8091
+
+
+#针对的被调⽤⽅微服务名称,不加就是全局⽣效
+lagou-service-resume:
+  ribbon:
+    #请求连接超时时间
+    ConnectTimeout: 2000
+    #请求处理超时时间 Feign的超时时长设置
+    ReadTimeout: 2000
+    #对所有操作都进⾏重试
+    OkToRetryOnAllOperations: true
+    ####根据如上配置，当访问到故障请求的时候，它会再尝试访问⼀次当前实例（次数由MaxAutoRetries配置），
+    ####如果不⾏，就换⼀个实例进⾏访问，如果还不⾏，再换⼀次实例访问（更换次数由MaxAutoRetriesNextServer配置），
+    ####如果依然不⾏，返回失败信息。
+    MaxAutoRetries: 0 #对当前选中实例重试次数，不包括第⼀次调⽤
+    MaxAutoRetriesNextServer: 0 #切换实例的重试次数
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #负载策略调整
+
+logging:
+  level:
+    # Feign⽇志只会对⽇志级别为debug的做出响应
+    com.lz.service.ResumeServiceFeignClient: debug
+
+# 开启Feign的熔断功能
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+      mime-types: text/html,application/xml,application/json # 设置压缩的数据类型，此处也是默认值
+      min-request-size: 2048 # 设置触发压缩的⼤⼩下限，此处也是默认值
+    response:
+      enabled: true # 开启响应压缩
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            #Hystrix的超时时⻓设置,和上面ribbon的超时时间比较取最小值,超时后返回兜底数据
+            # 个人理解是不影响上面的重试,两种超时场景,先达到哪种,都会触发兜底
+            timeoutInMilliseconds: 8000
