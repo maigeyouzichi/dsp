@@ -20,6 +20,7 @@
         <module>lagou-cloud-eureka-server-8762</module>
         <module>lagou-cloud-hystrix-dashboard-9000</module>
         <module>lagou-cloud-hystrix-turbine-9001</module>
+        <module>lagou-cloud-stream-producer-9090</module>
     </modules>
 
 
