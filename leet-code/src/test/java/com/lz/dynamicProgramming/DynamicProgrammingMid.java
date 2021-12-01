@@ -96,5 +96,28 @@ public class DynamicProgrammingMid {
         return dp.get(n);
     }
 
+    /**
+     * 跳跃游戏 II
+     * 思路: 数组索引为0的为第一个边界,每次找到当次的最大可达边界即为第二个边界,当遍历到边界时,step执行+1操作,边界值更换下一个边界,
+     * 如果,满足最后一步完成目标,即返回step+1;
+     */
+    int jump(int[] nums) {
+        if (nums[0] == 0 || nums.length ==1) return 0;
+        int step = 0;
+        int currentMaxIndex = 0;//实时的最右可达最大边界
+        int stepMaxIndex = 0;
+        for (int i = 0; i < nums.length; i++) {
+            currentMaxIndex = Math.max(currentMaxIndex,i+nums[i]);
+            if (nums[i]+i>=nums.length-1) {
+                return step+1;
+            }
+            if (i == stepMaxIndex) {
+                step ++;
+                stepMaxIndex = currentMaxIndex;
+            }
+        }
+        return 0;
+    }
+
 
 }
