@@ -5,7 +5,7 @@ spring:
     name: lagou-cloud-stream-producer
   cloud:
     stream:
-      binders: # 绑定MQ服务信息（此处我们是RabbitMQ）
+      binders: # 绑定MQ服务信息（此处我们是RabbitMQ）支持多个中间件配置
         lagouRabbitBinder: # 给Binder定义的名称，⽤于后⾯的关联
           type: rabbit # MQ类型，如果是Kafka的话，此处配置kafka
           environment: # MQ环境配置（⽤户名、密码等）
@@ -15,11 +15,12 @@ spring:
                 port: 5672
                 username: guest
                 password: guest
-      bindings: # 关联整合通道和binder对象
+      bindings: # 关联整合通道和binder对象,支持多个关联关系
         output: # output是我们定义的通道名称，此处不能乱改
           destination: lagouExchange # 要使⽤的Exchange名称（消息队列主题名称）
           content-type: text/plain # application/json # 消息类型设置，⽐如json
           binder: lagouRabbitBinder # 关联MQ服务
+          group: lagou001 # 同一个消费者组中只有一个实例会消费数据,解决重复消费问题
 
 eureka:
   client:
