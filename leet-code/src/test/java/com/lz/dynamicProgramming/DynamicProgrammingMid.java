@@ -26,8 +26,8 @@ public class DynamicProgrammingMid {
         //长度为1的子串
         for (int i = 0; i < s.length(); i++) {
             dp[i][i] = true;
-            if (i<s.length()-1 && chars[i]==chars[i+1]) {
-                dp[i][i+1] = true;
+            if (i < s.length() - 1 && chars[i] == chars[i + 1]) {
+                dp[i][i + 1] = true;
                 max = 2;
                 indexStart = i;
             }
@@ -63,7 +63,7 @@ public class DynamicProgrammingMid {
      * 其中 p + q = n-1，且 p q 均为非负整数。
      * 事实上，当上述 p 从 0 取到 n-1，q 从 n-1 取到 0 后，所有情况就遍历完了。
      * 注：上述遍历是没有重复情况出现的，即当 (p1,q1)≠(p2,q2) 时，按上述方式取的括号组合一定不同。
-     *
+     * <p>
      * 作者：yuyu-13
      * 链接：https://leetcode-cn.com/problems/generate-parentheses/solution/zui-jian-dan-yi-dong-de-dong-tai-gui-hua-bu
      * -lun-da/
@@ -80,14 +80,14 @@ public class DynamicProgrammingMid {
         list1.add("()");
         dp.add(list1);
 
-        for (int i = 2; i < n+1; i++) {
+        for (int i = 2; i < n + 1; i++) {
             LinkedList<String> tmp = new LinkedList<>();
             for (int j = 0; j < i; j++) {
                 List<String> one = dp.get(j);
                 List<String> two = dp.get(i - 1 - j);
                 for (String s : one) {
                     for (String s1 : two) {
-                        tmp.add("("+s+")"+s1);
+                        tmp.add("(" + s + ")" + s1);
                     }
                 }
             }
@@ -98,25 +98,48 @@ public class DynamicProgrammingMid {
 
     /**
      * 跳跃游戏 II
+     * 给你一个非负整数数组 nums ，你最初位于数组的第一个位置。
+     * 数组中的每个元素代表你在该位置可以跳跃的最大长度。
+     * 你的目标是使用最少的跳跃次数到达数组的最后一个位置。
+     * 假设你总是可以到达数组的最后一个位置。
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/jump-game-ii
      * 思路: 数组索引为0的为第一个边界,每次找到当次的最大可达边界即为第二个边界,当遍历到边界时,step执行+1操作,边界值更换下一个边界,
      * 如果,满足最后一步完成目标,即返回step+1;
      */
     int jump(int[] nums) {
-        if (nums[0] == 0 || nums.length ==1) return 0;
+        if (nums[0] == 0 || nums.length == 1) return 0;
         int step = 0;
         int currentMaxIndex = 0;//实时的最右可达最大边界
         int stepMaxIndex = 0;
         for (int i = 0; i < nums.length; i++) {
-            currentMaxIndex = Math.max(currentMaxIndex,i+nums[i]);
-            if (nums[i]+i>=nums.length-1) {
-                return step+1;
+            currentMaxIndex = Math.max(currentMaxIndex, i + nums[i]);
+            if (nums[i] + i >= nums.length - 1) {
+                return step + 1;
             }
             if (i == stepMaxIndex) {
-                step ++;
+                step++;
                 stepMaxIndex = currentMaxIndex;
             }
         }
         return 0;
+    }
+
+    /**
+     * 跳跃游戏
+     * <p>
+     * 给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。
+     * 数组中的每个元素代表你在该位置可以跳跃的最大长度。
+     * 判断你是否能够到达最后一个下标。
+     * 理解: 不断遍历,不断更新最远可达位置,如果最远可达位置不再更新,return结果
+     */
+    boolean canJump(int[] nums) {
+        int maxIndex = 0;
+        for (int i = 0; i <= maxIndex; i++) {
+            maxIndex = Math.max(maxIndex,nums[i]+i);
+            if (nums[i]+i >= nums.length-1) return true;
+        }
+        return false;
     }
 
 
