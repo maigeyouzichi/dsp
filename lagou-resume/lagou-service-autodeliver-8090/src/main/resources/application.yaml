@@ -52,6 +52,8 @@ logging:
   level:
     # Feign⽇志只会对⽇志级别为debug的做出响应
     com.lz.service.ResumeServiceFeignClient: debug
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
 
 # 开启Feign的熔断功能
 feign:
