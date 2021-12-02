@@ -73,4 +73,4 @@ hystrix:
           thread:
             #Hystrix的超时时⻓设置,和上面ribbon的超时时间比较取最小值,超时后返回兜底数据
             # 个人理解是不影响上面的重试,两种超时场景,先达到哪种,都会触发兜底
-            timeoutInMilliseconds: 8000
+            timeoutInMilliseconds: 8000 #超时时间的配置,hystrix的时间应该大于ribbon正常完成获取连接+调用+重试的总时间
