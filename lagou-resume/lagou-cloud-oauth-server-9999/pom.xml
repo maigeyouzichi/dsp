@@ -19,18 +19,18 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
-            <exclusions>
+            <!--<exclusions>
                 <exclusion>
                     <groupId>org.springframework.security.oauth.boot</groupId>
                     <artifactId>spring-security-oauth2-autoconfigure</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions>-->
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.security.oauth.boot</groupId>
             <artifactId>spring-security-oauth2-autoconfigure</artifactId>
             <version>2.1.2.RELEASE</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
