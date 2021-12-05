@@ -9,6 +9,15 @@
     </parent>
     <artifactId>lagou-service-autodeliver-8090</artifactId>
     <dependencies>
+        <!--链路追踪-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.lz</groupId>
             <artifactId>lagou-service-common</artifactId>

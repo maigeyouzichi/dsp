@@ -38,15 +38,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <!--链路追踪-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
-        </dependency>
         <!-- Actuator可以帮助你监控和管理Spring Boot应⽤-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

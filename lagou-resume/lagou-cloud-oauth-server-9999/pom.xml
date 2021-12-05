@@ -12,8 +12,9 @@
     <dependencies>
         <!--导⼊Eureka Client依赖-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>com.lz</groupId>
+            <artifactId>lagou-service-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!--导⼊spring cloud oauth2依赖-->
         <dependency>
@@ -45,8 +46,9 @@
             <artifactId>spring-tx</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.3</version>
         </dependency>
     </dependencies>
 

@@ -27,3 +27,12 @@ Spring:
       minimum-idle: 2
       auto-commit: true
 
+mybatis-plus:
+  executor-type: batch # batch\u6267\u884C\u5668
+  mapper-locations: "classpath:META-INF/mapper/*Mapper.xml"
+  configuration:
+    default-executor-type: simple # \u9ED8\u8BA4\u914D\u7F6E
+    # \u6253\u5370Sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
