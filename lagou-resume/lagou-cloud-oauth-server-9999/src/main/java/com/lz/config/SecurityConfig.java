@@ -20,6 +20,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private JdbcUserDetailsService jdbcUserDetailsService;
+
     /**
      * 注册⼀个认证管理器对象到容器
      */
@@ -38,10 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private JdbcUserDetailsService jdbcUserDetailsService;
     /**
      * 处理⽤户名和密码验证事宜
      * 1）客户端传递username和password参数到认证服务器
@@ -54,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 实例化⼀个⽤户对象(相当于数据表中的⼀条⽤户记录)
         /*UserDetails user = new User("admin","123456",new ArrayList<>());
         auth.inMemoryAuthentication().withUser(user).passwordEncoder(passwordEncoder);*/
-        auth.userDetailsService(jdbcUserDetailsService).passwordEncoder(passwordEncoder);
+        auth.userDetailsService(jdbcUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
 
