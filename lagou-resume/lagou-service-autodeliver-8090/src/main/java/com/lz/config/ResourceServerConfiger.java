@@ -4,10 +4,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.jwt.crypto.sign.MacSigner;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @SuppressWarnings("all")
 @Configuration
@@ -25,7 +28,7 @@ public class ResourceServerConfiger extends ResourceServerConfigurerAdapter {
      */
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        // 设置当前资源服务的资源id
+        /*// 设置当前资源服务的资源id
         resources.resourceId("autodeliver");
         // 定义token服务对象（token校验就应该靠token服务对象）
         RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
@@ -35,7 +38,38 @@ public class ResourceServerConfiger extends ResourceServerConfigurerAdapter {
         remoteTokenServices.setClientId("client_lagou");
         remoteTokenServices.setClientSecret("abcxyz");
         // 别忘了这⼀步
-        resources.tokenServices(remoteTokenServices);
+        resources.tokenServices(remoteTokenServices);*/
+
+        //jwt令牌改造
+        resources
+                //设置资源id
+                .resourceId("autodeliver")
+                .tokenStore(tokenStore())
+                //无状态设置
+                .stateless(true);
+    }
+
+    /**
+     * 该⽅法⽤于创建tokenStore对象（令牌存储对象）
+     * token以什么形式存储
+     */
+    private TokenStore tokenStore() {
+        //return new InMemoryTokenStore();
+        // 使⽤jwt令牌
+        return new JwtTokenStore(jwtAccessTokenConverter());
+    }
+
+
+    /**
+     * 返回jwt令牌转换器（帮助我们⽣成jwt令牌的）
+     * 在这⾥，我们可以把签名密钥传递进去给转换器对象
+     * @return
+     */
+    private JwtAccessTokenConverter jwtAccessTokenConverter() {
+        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+        jwtAccessTokenConverter.setSigningKey(sign_key); // 签名密钥
+        jwtAccessTokenConverter.setVerifier(new MacSigner(sign_key)); // 验证时使⽤的密钥，和签名密钥保持⼀致
+        return jwtAccessTokenConverter;
     }
 
     /**

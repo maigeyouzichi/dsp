@@ -100,7 +100,7 @@ public class OauthServerConfiger extends AuthorizationServerConfigurerAdapter {
      * 在这⾥，我们可以把签名密钥传递进去给转换器对象
      * @return
      */
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+    private JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
         jwtAccessTokenConverter.setSigningKey(sign_key); // 签名密钥
         jwtAccessTokenConverter.setVerifier(new MacSigner(sign_key)); // 验证时使⽤的密钥，和签名密钥保持⼀致
