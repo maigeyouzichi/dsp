@@ -1,5 +1,6 @@
 package com.lz.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,6 +20,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 public class ResourceServerConfiger extends ResourceServerConfigurerAdapter {
 
     private String sign_key = "lagou123"; // jwt签名密钥
+
+    @Autowired
+    private LagouAccessTokenConvertor lagouAccessTokenConvertor;
 
     /**
      * 该⽅法⽤于定义资源服务器向远程认证服务器发起请求，进⾏token校验等事宜
@@ -69,6 +73,7 @@ public class ResourceServerConfiger extends ResourceServerConfigurerAdapter {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
         jwtAccessTokenConverter.setSigningKey(sign_key); // 签名密钥
         jwtAccessTokenConverter.setVerifier(new MacSigner(sign_key)); // 验证时使⽤的密钥，和签名密钥保持⼀致
+        jwtAccessTokenConverter.setAccessTokenConverter(lagouAccessTokenConvertor);
         return jwtAccessTokenConverter;
     }
 
