@@ -22,6 +22,7 @@
         <module>lagou-cloud-hystrix-turbine-9001</module>
         <module>lagou-cloud-stream-producer-9090</module>
         <module>lagou-cloud-stream-consumer-9092</module>
+        <module>lagou-cloud-oauth-server-9999</module>
     </modules>
 
     <dependencyManagement>
