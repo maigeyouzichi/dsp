@@ -30,6 +30,8 @@ public class OauthServerConfiger extends AuthorizationServerConfigurerAdapter {
     private AuthenticationManager authenticationManager;
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private LagouAccessTokenConvertor lagouAccessTokenConvertor;
 
     private final String sign_key = "lagou123";
 
@@ -116,6 +118,7 @@ public class OauthServerConfiger extends AuthorizationServerConfigurerAdapter {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
         jwtAccessTokenConverter.setSigningKey(sign_key); // 签名密钥
         jwtAccessTokenConverter.setVerifier(new MacSigner(sign_key)); // 验证时使⽤的密钥，和签名密钥保持⼀致
+        jwtAccessTokenConverter.setAccessTokenConverter(lagouAccessTokenConvertor);
         return jwtAccessTokenConverter;
     }
 
