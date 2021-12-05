@@ -15,9 +15,9 @@ spring:
             connection-timeout: 10000
             connection-test-query: select now()
             validation-timeout: 3000
-            min-idle: 2
-            max-pool-size: 50
-            is-auto-commit: true
+            maximum-pool-size: 50
+            minimum-idle: 2
+            auto-commit: true
   application:
     name: lagou-service-resume
   zipkin:

@@ -13,3 +13,17 @@ server:
 Spring:
   application:
     name: lagou-cloud-oauth-server
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/oauth2?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&allowMultiQueries=true
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 10000
+      connection-test-query: select now()
+      validation-timeout: 3000
+      maximum-pool-size: 50
+      minimum-idle: 2
+      auto-commit: true
+
