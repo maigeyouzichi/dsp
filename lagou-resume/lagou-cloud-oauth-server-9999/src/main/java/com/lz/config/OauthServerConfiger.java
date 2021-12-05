@@ -90,6 +90,8 @@ public class OauthServerConfiger extends AuthorizationServerConfigurerAdapter {
 
     /**
      * 该⽅法⽤户获取⼀个token服务对象（该对象描述了token有效期等信息）
+     * tip: access_token 用来身份认证的令牌
+     *      refresh_token 刷新令牌,access_token过期后,拿来重新获取access_token的令牌,相对来说提高了安全性(不用每次都使用用户名和密码了)
      */
     private AuthorizationServerTokenServices authorizationServerTokenServices() {
         // 使⽤默认实现
