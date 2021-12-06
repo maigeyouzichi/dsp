@@ -47,6 +47,10 @@ Spring:
 #          filters:
 #            - StripPrefix=1 #去掉前缀(去掉第一段路由:/resume,如果为2,去掉/resume/openstate)
 #分布式链路追踪
+    nacos:
+      discovery:
+        server-addr: http://101.133.163.204:8848
+
 logging:
   level:
     org.springframework.web.servlet.DispatcherServlet: debug

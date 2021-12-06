@@ -32,10 +32,10 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <!--导⼊Eureka Client依赖-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+        </dependency>-->
         <!--导⼊spring cloud oauth2依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

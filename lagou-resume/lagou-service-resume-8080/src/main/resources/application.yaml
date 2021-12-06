@@ -20,6 +20,11 @@ spring:
             auto-commit: true
   application:
     name: lagou-service-resume
+  cloud:
+    nacos:
+      discovery:
+        ################ 配置nacos server地址
+        server-addr: http://101.133.163.204:8848
   zipkin:
     base-url: http://101.133.163.204:9411 # zipkin server的请求地址
     sender:
