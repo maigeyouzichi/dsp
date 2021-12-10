@@ -16,4 +16,5 @@ public class HelloConfig {
 
     private String name;
     private Integer rank;
+    private String test;
 }

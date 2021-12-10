@@ -16,7 +16,7 @@ spring:
         group: DEFAULT_GROUP
         prefix: hello-world
         file-extension: yaml
-        extension-configs:
-#          - dataId: common-mysql.yaml
-#            group: COMMON-GROUP
-#            refresh: false
+        extension-configs: #\u7EE7\u627F\u5176\u4ED6\u914D\u7F6E
+          - dataId: test.yaml
+            group: DEFAULT_GROUP
+            refresh: true

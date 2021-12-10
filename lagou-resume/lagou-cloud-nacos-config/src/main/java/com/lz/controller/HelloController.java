@@ -21,6 +21,7 @@ public class HelloController {
     public String helloWorld() {
         System.out.println(helloConfig.getRank());
         System.out.println(helloConfig.getName());
+        System.out.println(helloConfig.getTest());
         return "success";
     }
 }
