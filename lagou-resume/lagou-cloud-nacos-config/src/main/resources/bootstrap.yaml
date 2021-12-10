@@ -1,0 +1,22 @@
+server:
+  port: 7777
+spring:
+  profiles:
+    active: fat
+  application:
+    name: lagou-cloud-nacos-config
+  cloud:
+    nacos:
+      ################ \u914D\u7F6Enacos server\u5730\u5740 \u53EF\u4EE5\u5728\u8FD9\u4E00\u5C42,\u4E5F\u53EF\u4EE5\u518D\u4E0B\u4E00\u5C42
+      server-addr: http://101.133.163.204:8848
+      discovery:
+      config:
+        #server-addr: http://101.133.163.204:8848
+        namespace: ${nacos.namespace}
+        group: DEFAULT_GROUP
+        prefix: hello-world
+        file-extension: yaml
+        extension-configs:
+#          - dataId: common-mysql.yaml
+#            group: COMMON-GROUP
+#            refresh: false
