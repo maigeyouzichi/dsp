@@ -22,9 +22,10 @@ spring:
     name: lagou-service-resume
   cloud:
     nacos:
+      server-addr: http://127.0.0.1:8848
       discovery:
-        ################ 配置nacos server地址
-        server-addr: http://101.133.163.204:8848
+      config:
+
   zipkin:
     base-url: http://101.133.163.204:9411 # zipkin server的请求地址
     sender:

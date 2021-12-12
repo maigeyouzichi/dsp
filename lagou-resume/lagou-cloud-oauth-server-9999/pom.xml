@@ -6,7 +6,6 @@
         <groupId>com.lz</groupId>
         <artifactId>lagou-resume</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
     </parent>
     <artifactId>lagou-cloud-oauth-server-9999</artifactId>
     <dependencies>

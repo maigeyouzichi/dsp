@@ -7,17 +7,21 @@
         <artifactId>lagou-resume</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>lagou-cloud-stream-consumer-9092</artifactId>
+    <artifactId>lagou-service-autodeliver-8098-sentinel</artifactId>
     <dependencies>
-        <!--eureka client 客户端依赖引⼊-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>com.lz</groupId>
+            <artifactId>lagou-service-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <!--spring cloud stream 依赖（rabbit）-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--sentinel 核⼼环境 依赖-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
     </dependencies>
 
