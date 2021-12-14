@@ -87,6 +87,10 @@ public class BinaryTree {
         System.out.println(node.data);
     }
 
+    /**
+     * 广度优先遍历
+     * @param root
+     */
     public void levelOrderTraversal(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root);
