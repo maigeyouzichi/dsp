@@ -69,6 +69,7 @@
         <module>dubbo-spi</module>
         <module>lagou-resume</module>
         <module>leet-code</module>
+        <module>data-structure</module>
     </modules>
 
     <build>
