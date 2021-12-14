@@ -4,7 +4,7 @@ server:
 dubbo:
   registry:
     timeout: 10000
-    address: zookeeper://101.133.163.204:2181
+    address: zookeeper://106.15.107.103:2181
   protocol:
     port: 20800
     name: dubbo
