@@ -4,6 +4,7 @@ package com.lz.String;
  * 暴力匹配算法
  * @author lihao
  */
+@SuppressWarnings("all")
 public class BF {
 
     public static void main(String[] args) {
