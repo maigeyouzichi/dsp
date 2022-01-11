@@ -70,6 +70,8 @@
         <module>lagou-resume</module>
         <module>leet-code</module>
         <module>data-structure</module>
+        <module>mysql</module>
+        <module>redis</module>
     </modules>
 
     <build>
