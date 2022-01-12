@@ -71,6 +71,30 @@ public class LogAspect {
     @Around(value = "brokerAspect()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         log.info("方法环绕增强 ...");
+        // 获取切点方法上的注解
+        MethodSignature methodSignature = (MethodSignature) point.getSignature();
+        Method method = methodSignature.getMethod();
+        AspectLog annotation = method.getAnnotation(AspectLog.class);
+        String value = annotation.value();
+        String bizNo = annotation.bizNo();
+        log.info("注解数据value:{}",value);
+        //创建解析器
+        SpelExpressionParser parser = new SpelExpressionParser();
+        //获取表达式
+        Expression expression = parser.parseExpression(bizNo);
+        //设置解析上下文(有哪些占位符，以及每种占位符的值)
+        EvaluationContext context = new StandardEvaluationContext();
+        //获取参数值
+        Object[] args = point.getArgs();
+        //获取运行时参数的名称
+        DefaultParameterNameDiscoverer discoverer = new DefaultParameterNameDiscoverer();
+        String[] parameterNames = discoverer.getParameterNames(method);
+        for (int i = 0; i < parameterNames.length; i++) {
+            context.setVariable(parameterNames[i],args[i]);
+        }
+        //解析,获取替换后的结果
+        String result = Objects.requireNonNull(expression.getValue(context)).toString();
+        log.info("注解数据bizNo:{}",result);
         try {
             Object proceed = point.proceed();
             log.info("原本方法返回值:{}",proceed);

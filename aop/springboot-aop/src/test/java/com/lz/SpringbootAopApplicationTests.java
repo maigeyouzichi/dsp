@@ -1,5 +1,6 @@
 package com.lz;
 
+import com.lz.entity.Order;
 import com.lz.service.TestService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -17,9 +18,15 @@ class SpringbootAopApplicationTests {
 
     @Test
     public void testAop(){
-
         String result = testService.test02(1);
         System.out.println(result);
+    }
+
+    @Test
+    public void testAop2() {
+        Order order = new Order();
+        order.setPurchaseName("李志");
+        System.out.println(testService.test03(order));
     }
 
 }
