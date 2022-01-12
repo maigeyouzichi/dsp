@@ -9,6 +9,9 @@
     </parent>
     <artifactId>aop</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>springboot-aop</module>
+    </modules>
     <dependencies>
     </dependencies>
 </project>

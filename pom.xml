@@ -72,6 +72,7 @@
         <module>data-structure</module>
         <module>mysql</module>
         <module>redis</module>
+        <module>aop</module>
     </modules>
 
     <build>
