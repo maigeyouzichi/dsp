@@ -18,7 +18,7 @@ public class ArraySimple {
             int ele = nums[i];
             int t = target - ele;
             Integer index = map.get(t);
-            if (index != 0) return new int[]{i,index};
+            if (index != 0) return new int[]{i, index};
             map.put(ele, i);
         }
         return null;
@@ -26,27 +26,27 @@ public class ArraySimple {
 
     /**
      * 26. 删除有序数组中的重复项
-     *
+     * <p>
      * 1 2 3 4 3 3 3 4
      * p=0 1 2
      * q=1 2 3 4 5 6 7
      * 思路: 双指针遍历数组:
-     *  如果p,q位置数据相同,q++
-     *  如果p,q位置数据不同,q下标数据和p+1下标数据交换,同时
+     * 如果p,q位置数据相同,q++
+     * 如果p,q位置数据不同,q下标数据和p+1下标数据交换,同时
      */
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         int p = 0;
         int q = 1;
         while (q < nums.length) {
-            if (nums[p]==nums[q]) {
+            if (nums[p] == nums[q]) {
                 q++;
-            }else {
-                nums[p+1] = nums[q];
+            } else {
+                nums[p + 1] = nums[q];
                 p++;
             }
         }
-        return p+1;
+        return p + 1;
     }
 
     /**
@@ -55,23 +55,44 @@ public class ArraySimple {
     public int removeElement(int[] nums, int val) {
         if (nums == null || nums.length == 0) return 0;
         int i = 0;
-        int j = nums.length -1;
+        int j = nums.length - 1;
         while (i < j) {
             if (nums[i] == val) {
                 int tmp;
                 tmp = nums[i];
                 nums[i] = nums[j];
                 nums[j] = tmp;
-                j --;
-            }else {
-                i ++;
+                j--;
+            } else {
+                i++;
             }
         }
         if (nums[i] == val) return i;
-        return i+1;
+        return i + 1;
     }
 
-
+    /**
+     * 35. 搜索插入位置
+     */
+    public int searchInsert(int[] nums, int target) {
+        int i = 0;
+        int j = nums.length - 1;
+        while (i < j) {
+            int mid = (i + j) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
+                j = mid - 1;
+            } else {
+                i = mid + 1;
+            }
+        }
+        if (nums[i] < target) {
+            return i+1;
+        }else {
+            return i;
+        }
+    }
 
 
 }
