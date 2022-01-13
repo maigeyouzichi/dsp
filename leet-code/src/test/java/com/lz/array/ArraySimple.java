@@ -49,6 +49,28 @@ public class ArraySimple {
         return p+1;
     }
 
+    /**
+     * 27,移除元素
+     */
+    public int removeElement(int[] nums, int val) {
+        if (nums == null || nums.length == 0) return 0;
+        int i = 0;
+        int j = nums.length -1;
+        while (i < j) {
+            if (nums[i] == val) {
+                int tmp;
+                tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
+                j --;
+            }else {
+                i ++;
+            }
+        }
+        if (nums[i] == val) return i;
+        return i+1;
+    }
+
 
 
 
