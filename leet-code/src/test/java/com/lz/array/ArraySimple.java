@@ -113,4 +113,58 @@ public class ArraySimple {
         return digits;
     }
 
+
+    /**
+     * 88,合并有序数组
+     */
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        m --;
+        n --;
+        int k = nums1.length-1;
+        while (n >= 0) {
+            if (m >= 0 && nums1[m] > nums2[n]) {
+                nums1[k] = nums1[m];
+                m --;
+            }else {
+                nums1[k] = nums2[n];
+                n --;
+            }
+            k --;
+        }
+    }
+
+    /**
+     * 136. 只出现一次的数字
+     * 位运算:
+     *  &: 与 -- 1 & 1 = 1 其余都是0
+     *  |: 或 -- 存在1就是1
+     *  ^: 异或 -- 相同为0,不同为1 即: 任何数字和0进行异或运算结果都是数字本身, 任何数字和其本身异或结果都是0,且支持交换律.
+     */
+    public int singleNumber(int[] nums) {
+        int num = 0;
+        for (int i = 0; i < nums.length; i++) {
+            num = num^nums[i];
+        }
+        return num;
+    }
+
+    /**
+     * 167.两数之和 有序数组
+     */
+    private int[] twoSum02(int[] numbers, int target) {
+        int i = 0;
+        int j = numbers.length -1;
+        int sum;
+        while (i < j) {
+            sum = numbers[i]+numbers[j];
+            if (sum == target) {
+                return new int[]{i+1,j+1};
+            }else if (sum > target) {
+                j --;
+            }else {
+                i ++;
+            }
+        }
+        return null;
+    }
 }
