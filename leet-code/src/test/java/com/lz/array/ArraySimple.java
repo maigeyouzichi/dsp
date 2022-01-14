@@ -1,5 +1,8 @@
 package com.lz.array;
 
+import org.junit.jupiter.api.Test;
+
+import java.security.DigestInputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -94,5 +97,20 @@ public class ArraySimple {
         }
     }
 
+    /**
+     * 66,加一
+     */
+    public int[] plusOne(int[] digits) {
+        for (int i = digits.length-1; i >= 0; i--) {
+            digits[i] = digits[i]+1;
+            digits[i] = digits[i]%10;
+            //如果不需要进位,直接返回
+            if (digits[i] != 0) return digits;
+        }
+        //如果可以走到这一步,说明一直都在进位,即9999这样的情况
+        digits = new int[digits.length+1];
+        digits[0] = 1;
+        return digits;
+    }
 
 }
