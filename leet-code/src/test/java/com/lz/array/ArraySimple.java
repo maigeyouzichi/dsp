@@ -167,4 +167,19 @@ public class ArraySimple {
         }
         return null;
     }
+
+    /**
+     * 169,多数元素
+     */
+    public int majorityElement(int[] nums) {
+        int t = nums.length/2;
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int num : nums) {
+            int count = map.get(num) == null ? 0 : map.get(num);
+            count ++;
+            if (count > t) return num;
+            map.put(num,count);
+        }
+        return 0;
+    }
 }
