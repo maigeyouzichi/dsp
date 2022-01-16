@@ -3,6 +3,7 @@ package com.lz.array;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -257,6 +258,32 @@ public class ArraySimple {
             list.add(nums[i]+"");
         }
         return list;
+    }
+
+    /**
+     * 268.丢失的数字
+     */
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != i) return i;
+        }
+        return nums.length;
+    }
+
+    /**
+     * 268.丢失的数字 优化
+     * 思路: 位运算, 0和任何数运算,结果都是数本身,两个相同的数进行位运算,结果为0
+     */
+    public int missingNumber2(int[] nums) {
+        int xor = 0;
+        for (int i = 0; i < nums.length; i++) {
+            xor ^= nums[i];
+        }
+        for (int i = 0; i < nums.length+1; i++) {
+            xor ^= i;
+        }
+        return xor;
     }
 
 
