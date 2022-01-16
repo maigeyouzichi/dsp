@@ -1,9 +1,5 @@
 package com.lz.array;
 
-import org.junit.jupiter.api.Test;
-
-import java.security.DigestInputStream;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -182,4 +178,18 @@ public class ArraySimple {
         }
         return 0;
     }
+
+    /**
+     * 217,存在重复元素
+     */
+    public boolean containsDuplicate(int[] nums) {
+        if (nums == null || nums.length == 0) return false;
+        Map<Integer,Integer> map = new HashMap<>(nums.length);
+        for (int num : nums) {
+            if (map.get(num) != null) return true;
+            map.put(num,1);
+        }
+        return false;
+    }
+
 }
