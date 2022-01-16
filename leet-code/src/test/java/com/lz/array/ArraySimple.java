@@ -1,7 +1,11 @@
 package com.lz.array;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 数组类型题目 -- 简单
@@ -190,6 +194,24 @@ public class ArraySimple {
             map.put(num,1);
         }
         return false;
+    }
+
+    /**
+     * 217,存在重复元素
+     * 优化
+     */
+    public boolean containsDuplicate2(int[] nums) {
+        if (nums == null || nums.length == 0) return false;
+        Set<Integer> set = new HashSet<>(nums.length);
+        for (int num : nums) {
+            if (!set.add(num)) return true;
+        }
+        return false;
+    }
+
+    @Test
+    void test() {
+        System.out.println("hello world");
     }
 
 }
