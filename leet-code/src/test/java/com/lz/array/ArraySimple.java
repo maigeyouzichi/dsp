@@ -2,8 +2,10 @@ package com.lz.array;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -91,8 +93,8 @@ public class ArraySimple {
             }
         }
         if (nums[i] < target) {
-            return i+1;
-        }else {
+            return i + 1;
+        } else {
             return i;
         }
     }
@@ -101,14 +103,14 @@ public class ArraySimple {
      * 66,加一
      */
     public int[] plusOne(int[] digits) {
-        for (int i = digits.length-1; i >= 0; i--) {
-            digits[i] = digits[i]+1;
-            digits[i] = digits[i]%10;
+        for (int i = digits.length - 1; i >= 0; i--) {
+            digits[i] = digits[i] + 1;
+            digits[i] = digits[i] % 10;
             //如果不需要进位,直接返回
             if (digits[i] != 0) return digits;
         }
         //如果可以走到这一步,说明一直都在进位,即9999这样的情况
-        digits = new int[digits.length+1];
+        digits = new int[digits.length + 1];
         digits[0] = 1;
         return digits;
     }
@@ -118,32 +120,32 @@ public class ArraySimple {
      * 88,合并有序数组
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        m --;
-        n --;
-        int k = nums1.length-1;
+        m--;
+        n--;
+        int k = nums1.length - 1;
         while (n >= 0) {
             if (m >= 0 && nums1[m] > nums2[n]) {
                 nums1[k] = nums1[m];
-                m --;
-            }else {
+                m--;
+            } else {
                 nums1[k] = nums2[n];
-                n --;
+                n--;
             }
-            k --;
+            k--;
         }
     }
 
     /**
      * 136. 只出现一次的数字
      * 位运算:
-     *  &: 与 -- 1 & 1 = 1 其余都是0
-     *  |: 或 -- 存在1就是1
-     *  ^: 异或 -- 相同为0,不同为1 即: 任何数字和0进行异或运算结果都是数字本身, 任何数字和其本身异或结果都是0,且支持交换律.
+     * &: 与 -- 1 & 1 = 1 其余都是0
+     * |: 或 -- 存在1就是1
+     * ^: 异或 -- 相同为0,不同为1 即: 任何数字和0进行异或运算结果都是数字本身, 任何数字和其本身异或结果都是0,且支持交换律.
      */
     public int singleNumber(int[] nums) {
         int num = 0;
         for (int i = 0; i < nums.length; i++) {
-            num = num^nums[i];
+            num = num ^ nums[i];
         }
         return num;
     }
@@ -153,16 +155,16 @@ public class ArraySimple {
      */
     private int[] twoSum02(int[] numbers, int target) {
         int i = 0;
-        int j = numbers.length -1;
+        int j = numbers.length - 1;
         int sum;
         while (i < j) {
-            sum = numbers[i]+numbers[j];
+            sum = numbers[i] + numbers[j];
             if (sum == target) {
-                return new int[]{i+1,j+1};
-            }else if (sum > target) {
-                j --;
-            }else {
-                i ++;
+                return new int[]{i + 1, j + 1};
+            } else if (sum > target) {
+                j--;
+            } else {
+                i++;
             }
         }
         return null;
@@ -172,13 +174,13 @@ public class ArraySimple {
      * 169,多数元素
      */
     public int majorityElement(int[] nums) {
-        int t = nums.length/2;
-        Map<Integer,Integer> map = new HashMap<>();
+        int t = nums.length / 2;
+        Map<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
             int count = map.get(num) == null ? 0 : map.get(num);
-            count ++;
+            count++;
             if (count > t) return num;
-            map.put(num,count);
+            map.put(num, count);
         }
         return 0;
     }
@@ -188,10 +190,10 @@ public class ArraySimple {
      */
     public boolean containsDuplicate(int[] nums) {
         if (nums == null || nums.length == 0) return false;
-        Map<Integer,Integer> map = new HashMap<>(nums.length);
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
         for (int num : nums) {
             if (map.get(num) != null) return true;
-            map.put(num,1);
+            map.put(num, 1);
         }
         return false;
     }
@@ -214,14 +216,49 @@ public class ArraySimple {
      */
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         if (nums == null || nums.length == 0) return false;
-        Map<Integer,Integer> map = new HashMap<>(nums.length);
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
             Integer index = map.get(nums[i]);
-            if (index != null && Math.abs(i-index)<=k) return true;
-            map.put(nums[i],i);
+            if (index != null && Math.abs(i - index) <= k) return true;
+            map.put(nums[i], i);
         }
         return false;
     }
+
+    /**
+     * 228.汇总区间
+     * 注意: 数字类型溢出
+     *  a - b > 1 写成 a - 1 > b
+     */
+    public List<String> summaryRanges(int[] nums) {
+        List<String> list = new ArrayList<>();
+        if (nums.length == 0) return list;
+        if (nums.length == 1) {
+            list.add(nums[0] + "");
+            return list;
+        }
+        int i = 0;
+        int j = 1;
+        while (j < nums.length) {
+            if (nums[j] - 1  > nums[j - 1] && j - i > 1) {
+                String str = nums[i] + "->" + nums[j - 1];
+                list.add(str);
+                i = j;
+            } else if (nums[j] - 1  > nums[j - 1] && j - i == 1) {
+                list.add(nums[i] + "");
+                i = j;
+            }
+            j++;
+        }
+        if (nums[j - 1] - 1 == nums[j - 2]) {
+            String str = nums[i] + "->" + nums[j - 1];
+            list.add(str);
+        }else {
+            list.add(nums[i]+"");
+        }
+        return list;
+    }
+
 
     @Test
     void test() {
