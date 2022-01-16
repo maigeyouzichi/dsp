@@ -229,7 +229,7 @@ public class ArraySimple {
     /**
      * 228.汇总区间
      * 注意: 数字类型溢出
-     *  a - b > 1 写成 a - 1 > b
+     * a - b > 1 写成 a - 1 > b
      */
     public List<String> summaryRanges(int[] nums) {
         List<String> list = new ArrayList<>();
@@ -241,11 +241,11 @@ public class ArraySimple {
         int i = 0;
         int j = 1;
         while (j < nums.length) {
-            if (nums[j] - 1  > nums[j - 1] && j - i > 1) {
+            if (nums[j] - 1 > nums[j - 1] && j - i > 1) {
                 String str = nums[i] + "->" + nums[j - 1];
                 list.add(str);
                 i = j;
-            } else if (nums[j] - 1  > nums[j - 1] && j - i == 1) {
+            } else if (nums[j] - 1 > nums[j - 1] && j - i == 1) {
                 list.add(nums[i] + "");
                 i = j;
             }
@@ -254,8 +254,8 @@ public class ArraySimple {
         if (nums[j - 1] - 1 == nums[j - 2]) {
             String str = nums[i] + "->" + nums[j - 1];
             list.add(str);
-        }else {
-            list.add(nums[i]+"");
+        } else {
+            list.add(nums[i] + "");
         }
         return list;
     }
@@ -273,23 +273,69 @@ public class ArraySimple {
 
     /**
      * 268.丢失的数字 优化
-     * 思路: 位运算, 0和任何数运算,结果都是数本身,两个相同的数进行位运算,结果为0
+     * 思路: 位运算--异或, 0和任何数运算,结果都是数本身,两个相同的数进行异或运算,结果为0
      */
     public int missingNumber2(int[] nums) {
         int xor = 0;
         for (int i = 0; i < nums.length; i++) {
             xor ^= nums[i];
         }
-        for (int i = 0; i < nums.length+1; i++) {
+        for (int i = 0; i < nums.length + 1; i++) {
             xor ^= i;
         }
         return xor;
     }
 
+    /**
+     * 283. 移动零
+     */
+    public void moveZeroes(int[] nums) {
+        if (nums == null || nums.length == 1) return;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (nums[i] != 0) {
+                int j = i;
+                while (nums[j] != 0) {
+                    j--;
+                    if (j < 0) return;
+                }
+                for (int k = j; k < i; k++) {
+                    int tmp = nums[k];
+                    nums[k] = nums[k + 1];
+                    nums[k + 1] = tmp;
+                }
+            }
+        }
+    }
+
+    /**
+     * 283. 移动零 优化
+     */
+    public void moveZeroes2(int[] nums) {
+        if (nums == null || nums.length == 1) return;
+        int i = 0;
+        while (true) {
+            while (nums[i]!=0) {
+                i++;
+                if (i >= nums.length) return;
+            }
+            int j = i;
+            while (nums[j] == 0) {
+                j ++;
+                if (j >= nums.length) return;
+            }
+            int tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+            i++;
+        }
+    }
+
 
     @Test
     void test() {
-        System.out.println("hello world");
+        int[] nums = {0,1,0,3,12};
+        moveZeroes2(nums);
+        System.out.println(Arrays.toString(nums));
     }
 
 }
