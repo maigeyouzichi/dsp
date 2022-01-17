@@ -314,13 +314,13 @@ public class ArraySimple {
         if (nums == null || nums.length == 1) return;
         int i = 0;
         while (true) {
-            while (nums[i]!=0) {
+            while (nums[i] != 0) {
                 i++;
                 if (i >= nums.length) return;
             }
             int j = i;
             while (nums[j] == 0) {
-                j ++;
+                j++;
                 if (j >= nums.length) return;
             }
             int tmp = nums[i];
@@ -342,7 +342,7 @@ public class ArraySimple {
             if (nums[j] != 0) {
                 nums[i++] = nums[j];
             }
-            j ++;
+            j++;
         }
         for (int k = i; k < nums.length; k++) {
             nums[k] = 0;
@@ -364,7 +364,7 @@ public class ArraySimple {
         int[] arr = new int[set2.size()];
         int index = 0;
         for (Integer num : set2) {
-            arr[index ++] = num;
+            arr[index++] = num;
         }
         return arr;
     }
@@ -374,27 +374,44 @@ public class ArraySimple {
      */
     public int[] intersect(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) return intersect(nums2, nums1);
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int num : nums1) {
             Integer count = map.getOrDefault(num, 0) + 1;
-            map.put(num,count);
+            map.put(num, count);
         }
         int[] arr = new int[nums1.length];
         int index = 0;
         for (int num : nums2) {
-            int count = map.getOrDefault(num,0);
+            int count = map.getOrDefault(num, 0);
             if (count > 0) {
-                arr[index ++] = num;
-                map.put(num,count-1);
+                arr[index++] = num;
+                map.put(num, count - 1);
             }
         }
         return Arrays.copyOfRange(arr, 0, index);
     }
 
+    /**
+     * 414,第三大的数
+     */
+    public int thirdMax(int[] nums) {
+        Arrays.sort(nums);
+        int index = nums.length - 1;
+        int count = 2;
+        while (index > 0) {
+            if (nums[index] != nums[index - 1]) {
+                count --;
+                if (count==0) return nums[index-1];
+            }
+            index --;
+        }
+        return nums[nums.length-1];
+    }
+
 
     @Test
     void test() {
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         System.out.println(map.getOrDefault(1, 1));
     }
 
