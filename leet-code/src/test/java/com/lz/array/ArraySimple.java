@@ -426,6 +426,22 @@ public class ArraySimple {
         return list;
     }
 
+    /**
+     * 453. 最小操作次数使数组元素相等
+     * 思路: n-1个数字+1的效果 == 1个数字-1
+     */
+    public int minMoves(int[] nums) {
+        int min = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            min = Math.min(min,nums[i]);
+        }
+        int res = 0;
+        for (int num : nums) {
+            res += num - min;
+        }
+        return res;
+    }
+
 
     @Test
     void test() {
