@@ -2,6 +2,7 @@ package com.lz.array;
 
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import java.security.interfaces.RSAKey;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -501,6 +502,24 @@ public class ArraySimple {
             }
         }
         return result;
+    }
+
+    /**
+     * 495. 提莫攻击
+     */
+    public int findPoisonedDuration(int[] timeSeries, int duration) {
+        if (timeSeries.length == 0) return 0;
+        int result = 0;
+        for (int i = 0; i < timeSeries.length-1; i++) {
+            int m = timeSeries[i];
+            int n = timeSeries[i+1];
+            if (m+duration-1<n){
+                result += duration;
+            }else {
+                result += n-m;
+            }
+        }
+        return result+duration;
     }
 
     @Test
