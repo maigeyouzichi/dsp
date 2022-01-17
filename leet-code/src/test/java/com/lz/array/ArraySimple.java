@@ -2,6 +2,7 @@ package com.lz.array;
 
 import org.junit.jupiter.api.Test;
 
+import java.security.interfaces.RSAKey;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -483,6 +484,23 @@ public class ArraySimple {
             }
         }
         return land * 4 -border *2;
+    }
+
+    /**
+     * 485, 最大连续1的个数
+     */
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int result = 0;
+        int tmp = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                tmp ++;
+                result = Math.max(result,tmp);
+            }else {
+                tmp = 0;
+            }
+        }
+        return result;
     }
 
     @Test
