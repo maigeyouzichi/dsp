@@ -2,8 +2,6 @@ package com.lz.array;
 
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
-import java.security.interfaces.RSAKey;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,6 +13,7 @@ import java.util.Set;
 /**
  * 数组类型题目 -- 简单
  */
+@SuppressWarnings("all")
 public class ArraySimple {
 
     /**
