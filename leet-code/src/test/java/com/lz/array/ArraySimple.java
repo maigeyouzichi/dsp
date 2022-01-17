@@ -462,6 +462,28 @@ public class ArraySimple {
         return count;
     }
 
+    /**
+     * 463. 岛屿的周长
+     * 思路: 这是一个数学题,找到土地个数和接壤个数即可求出值
+     */
+    public int islandPerimeter(int[][] grid) {
+        int land = 0;
+        int border = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == 1) {
+                    land ++;
+                    if (i-1>=0 && grid[i-1][j] ==1) {
+                        border ++;
+                    }
+                    if (j-1>=0 && grid[i][j-1] ==1) {
+                        border ++;
+                    }
+                }
+            }
+        }
+        return land * 4 -border *2;
+    }
 
     @Test
     void test() {
