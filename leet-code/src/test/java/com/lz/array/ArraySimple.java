@@ -369,12 +369,33 @@ public class ArraySimple {
         return arr;
     }
 
+    /**
+     * 350,两个数交集2
+     */
+    public int[] intersect(int[] nums1, int[] nums2) {
+        if (nums1.length > nums2.length) return intersect(nums2, nums1);
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int num : nums1) {
+            Integer count = map.getOrDefault(num, 0) + 1;
+            map.put(num,count);
+        }
+        int[] arr = new int[nums1.length];
+        int index = 0;
+        for (int num : nums2) {
+            int count = map.getOrDefault(num,0);
+            if (count > 0) {
+                arr[index ++] = num;
+                map.put(num,count-1);
+            }
+        }
+        return Arrays.copyOfRange(arr, 0, index);
+    }
+
 
     @Test
     void test() {
-        int[] nums = {0,1,0,3,12};
-        moveZeroes2(nums);
-        System.out.println(Arrays.toString(nums));
+        Map<Integer,Integer> map = new HashMap<>();
+        System.out.println(map.getOrDefault(1, 1));
     }
 
 }
