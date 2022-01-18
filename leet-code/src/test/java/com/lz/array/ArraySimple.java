@@ -7,8 +7,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * 数组类型题目 -- 简单
@@ -401,12 +404,12 @@ public class ArraySimple {
         int count = 2;
         while (index > 0) {
             if (nums[index] != nums[index - 1]) {
-                count --;
-                if (count==0) return nums[index-1];
+                count--;
+                if (count == 0) return nums[index - 1];
             }
-            index --;
+            index--;
         }
-        return nums[nums.length-1];
+        return nums[nums.length - 1];
     }
 
 
@@ -414,7 +417,7 @@ public class ArraySimple {
      * 448. 找到所有数组中消失的数字
      */
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        int[] arr = new int[nums.length+1];
+        int[] arr = new int[nums.length + 1];
         for (int num : nums) {
             arr[num] = 1;
         }
@@ -434,7 +437,7 @@ public class ArraySimple {
     public int minMoves(int[] nums) {
         int min = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            min = Math.min(min,nums[i]);
+            min = Math.min(min, nums[i]);
         }
         int res = 0;
         for (int num : nums) {
@@ -455,10 +458,10 @@ public class ArraySimple {
         int count = 0;
         while (j < s.length && i < g.length) {
             if (s[j] >= g[i]) {
-                count ++;
-                i ++;
+                count++;
+                i++;
             }
-            j ++;
+            j++;
         }
         return count;
     }
@@ -473,17 +476,17 @@ public class ArraySimple {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == 1) {
-                    land ++;
-                    if (i-1>=0 && grid[i-1][j] ==1) {
-                        border ++;
+                    land++;
+                    if (i - 1 >= 0 && grid[i - 1][j] == 1) {
+                        border++;
                     }
-                    if (j-1>=0 && grid[i][j-1] ==1) {
-                        border ++;
+                    if (j - 1 >= 0 && grid[i][j - 1] == 1) {
+                        border++;
                     }
                 }
             }
         }
-        return land * 4 -border *2;
+        return land * 4 - border * 2;
     }
 
     /**
@@ -494,9 +497,9 @@ public class ArraySimple {
         int tmp = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 1) {
-                tmp ++;
-                result = Math.max(result,tmp);
-            }else {
+                tmp++;
+                result = Math.max(result, tmp);
+            } else {
                 tmp = 0;
             }
         }
@@ -509,38 +512,53 @@ public class ArraySimple {
     public int findPoisonedDuration(int[] timeSeries, int duration) {
         if (timeSeries.length == 0) return 0;
         int result = 0;
-        for (int i = 0; i < timeSeries.length-1; i++) {
+        for (int i = 0; i < timeSeries.length - 1; i++) {
             int m = timeSeries[i];
-            int n = timeSeries[i+1];
-            if (m+duration-1<n){
+            int n = timeSeries[i + 1];
+            if (m + duration - 1 < n) {
                 result += duration;
-            }else {
-                result += n-m;
+            } else {
+                result += n - m;
             }
         }
-        return result+duration;
+        return result + duration;
     }
 
     /**
      * 496. 下一个更大元素 I
      */
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums2.length; i++) {
-            map.put(nums2[i],i);
+            map.put(nums2[i], i);
         }
         int[] result = new int[nums1.length];
         for (int i = 0; i < nums1.length; i++) {
             int index = map.get(nums1[i]);
             result[i] = -1;
-            for (int j = index+1; j < nums2.length; j++) {
-                if (nums2[j]>nums1[i]) {
+            for (int j = index + 1; j < nums2.length; j++) {
+                if (nums2[j] > nums1[i]) {
                     result[i] = nums2[j];
                     break;
                 }
             }
         }
         return result;
+    }
+
+    /**
+     * 键盘行
+     */
+    public String[] findWords(String[] words) {
+        return Arrays.asList(words)
+                .stream()
+                .filter(s->
+                        s.toLowerCase().replaceAll("^[qwertyuiop]*$", "").equals("")
+                                || s.toLowerCase().replaceAll("^[asdfghjkl]*$", "").equals("")
+                                || s.toLowerCase().replaceAll("^[zxcvbnm]*$", "").equals("")
+                )
+                .collect(Collectors.toList())
+                .toArray(new String[0]);
     }
 
     @Test
