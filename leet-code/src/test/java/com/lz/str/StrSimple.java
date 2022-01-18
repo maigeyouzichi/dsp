@@ -36,4 +36,27 @@ public class StrSimple {
             default:return 0;
         }
     }
+
+    /**
+     * 14. 最长公共前缀
+     */
+    public String longestCommonPrefix(String[] strs) {
+        String res = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            String str = strs[i];
+            if (str.length() == 0) return "";
+            for (int j = 0; j <= str.length(); j++) {
+                if (j == res.length()) break;
+                if (j == str.length()) {
+                    res = str;
+                    break;
+                }
+                if (str.charAt(j) != res.charAt(j)) {
+                    res = res.substring(0,j);
+                    break;
+                }
+            }
+        }
+        return res;
+    }
 }
