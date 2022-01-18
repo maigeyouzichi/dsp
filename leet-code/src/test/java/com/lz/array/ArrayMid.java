@@ -1,6 +1,5 @@
 package com.lz.array;
 
-import org.assertj.core.util.Lists;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,6 +51,26 @@ public class ArrayMid {
                 }else {
                     left ++;
                 }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 16. 最接近的三数之和
+     */
+    public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
+        int result = nums[0]+nums[1]+nums[2];
+        for (int i = 0; i < nums.length-2; i++) {
+            int left = i+1;
+            int right = nums.length -1;
+            while (left < right) {
+                int sum = nums[i]+nums[left]+nums[right];
+                if (Math.abs(target-result)>Math.abs(target-sum)) result = sum;
+                if (sum == target) return sum;
+                else if (sum > target) right --;
+                else left ++;
             }
         }
         return result;
