@@ -1,5 +1,6 @@
 package com.lz.array;
 
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,5 +75,13 @@ public class ArrayMid {
             }
         }
         return result;
+    }
+
+
+    @Test
+    void test() {
+        int[] arr = {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0};
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
     }
 }
