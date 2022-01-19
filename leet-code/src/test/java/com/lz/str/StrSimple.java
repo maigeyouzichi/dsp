@@ -1,5 +1,7 @@
 package com.lz.str;
 
+import java.util.Stack;
+
 /**
  * 字符串 -- 简单
  * @author lihao
@@ -58,5 +60,29 @@ public class StrSimple {
             }
         }
         return res;
+    }
+
+    /**
+     * 20,有效的括号
+     */
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (!stack.isEmpty() && s.charAt(i) == getChar(stack.peek())) {
+                stack.pop();
+            }else {
+                stack.push(s.charAt(i));
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    private char getChar(char c) {
+        switch (c) {
+            case '(': return ')';
+            case '{': return '}';
+            case '[': return ']';
+            default: return '-';
+        }
     }
 }
