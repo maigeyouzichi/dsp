@@ -1,5 +1,7 @@
 package com.lz.str;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Stack;
 
 /**
@@ -84,5 +86,75 @@ public class StrSimple {
             case '[': return ']';
             default: return '-';
         }
+    }
+
+
+    /**
+     * 28, 实现strStr()
+     */
+    public int strStr(String haystack, String needle) {
+        if (haystack.length() < needle.length()) return -1;
+        if (needle.length() == 0) { return 0;}
+        else if (haystack.length() == 0){return -1;}
+        int j = 0;
+        while (j < haystack.length()) {
+            if (needle.charAt(0) == haystack.charAt(j)) {
+                int k = j;
+                int i = 0;
+                if (k + needle.length() > haystack.length()) return -1;
+                while (k < haystack.length()) {
+                    if (haystack.charAt(k) == needle.charAt(i)){
+                        i ++;
+                        k ++;
+                        if (i==needle.length()) return k-i;
+                    }else {
+                        break;
+                    }
+                }
+            }
+            j ++;
+        }
+        return -1;
+    }
+
+    /**
+     * 28, 实现strStr()
+     *  -- 优化 kmp算法
+     */
+    public int strStr2(String haystack, String needle) {
+        //构建next数组
+        int m = haystack.length();
+        int n = needle.length();
+        if (n==0) return 0;
+        if (n>m) return -1;
+        int[] next = new int[n];
+        int j = 0;
+        for (int i = 1; i < n; i++) {
+            while (j>0 && needle.charAt(i) != needle.charAt(j)) {
+                j = next[j-1];
+            }
+            if (needle.charAt(i) == needle.charAt(j)) {
+                j ++;
+            }
+            next[i] = j;
+        }
+        //遍历 -> 判断子串
+        j = 0;
+        for (int i = 0; i < m; i++) {
+            while (j>0 && haystack.charAt(i) != needle.charAt(j)) {
+                j = next[j-1];
+            }
+            if (needle.charAt(j) == haystack.charAt(i)) {
+                j ++;
+            }
+            if (j == n) return i-(n-1);
+        }
+        return -1;
+    }
+
+    @Test
+    public void test() {
+        int res = this.strStr("mississippi", "issip");
+        System.out.println(res);
     }
 }
