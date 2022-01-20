@@ -152,9 +152,26 @@ public class StrSimple {
         return -1;
     }
 
+
+    /**
+     * 58. 最后一个单词的长度
+     */
+    public int lengthOfLastWord(String s) {
+        int i = s.length() -1;
+        while (i >= 0 && s.charAt(i) == ' ') {
+            i --;
+        }
+        int res = 0;
+        while (i >= 0) {
+            if (s.charAt(i) == ' ') return res;
+            res ++;
+            i --;
+        }
+        return res;
+    }
+
     @Test
     public void test() {
-        int res = this.strStr("mississippi", "issip");
-        System.out.println(res);
+        System.out.println(lengthOfLastWord("Hello World"));
     }
 }
