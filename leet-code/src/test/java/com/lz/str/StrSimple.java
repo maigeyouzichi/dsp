@@ -170,8 +170,60 @@ public class StrSimple {
         return res;
     }
 
+    /**
+     * 67. 二进制求和
+     */
+    public String addBinary(String a, String b) {
+        int i = a.length()-1;
+        int j = b.length()-1;
+        int k = 0;
+        String res = "";
+        while (i>=0 || j>=0) {
+            int num1 = i>=0 ? Integer.parseInt(String.valueOf(a.charAt(i))) : 0;
+            int num2 = j>=0 ? Integer.parseInt(String.valueOf(b.charAt(j))) : 0;
+            int tmp = num1 + num2 + k;
+            if (tmp == 2) {
+                res = "0"+res;
+                k = 1;
+            }else if (tmp == 3){
+                res = "1"+res;
+                k = 1;
+            }else {
+                res = tmp + res;
+                k = 0;
+            }
+            i --;
+            j --;
+        }
+        if (k == 1) {
+            res = "1"+res;
+        }
+        return res;
+    }
+
+    /**
+     * 67. 二进制求和
+     * 优化
+     */
+    public String addBinary2(String a, String b) {
+        int k = 0;
+        int sum = 0;
+        StringBuilder str = new StringBuilder();
+        for (int i = a.length()-1,j=b.length()-1; i>=0 || j>=0 ; i--,j--) {
+            sum += i>=0 ? a.charAt(i)-'0' : 0;
+            sum += j>=0 ? b.charAt(j)-'0' : 0;
+            sum += k;
+            k = sum/2;
+            str.append(sum % 2);
+            sum = 0;
+        }
+        if (k>0) str.append(k);
+        return str.reverse().toString();
+    }
+
+
     @Test
     public void test() {
-        System.out.println(lengthOfLastWord("Hello World"));
+        addBinary("1010", "1011");
     }
 }
