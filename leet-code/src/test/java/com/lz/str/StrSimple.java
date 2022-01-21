@@ -260,6 +260,22 @@ public class StrSimple {
         return true;
     }
 
+    /**
+     * 344. 反转字符串
+     */
+    public void reverseString(char[] s) {
+        int i = 0;
+        int j = s.length -1;
+        char tmp = 0;
+        while (i < j) {
+            tmp = s[i];
+            s[i] = s[j];
+            s[j] = tmp;
+            i ++;
+            j --;
+        }
+    }
+
 
     @Test
     public void test() {
