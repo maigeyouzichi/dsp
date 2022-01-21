@@ -2,6 +2,7 @@ package com.lz.str;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -240,6 +241,21 @@ public class StrSimple {
             if (Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))) return false;
             i++;
             j--;
+        }
+        return true;
+    }
+
+    /**
+     * 242. 有效的字母异位词
+     */
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) return false;
+        char[] arr1 = s.toCharArray();
+        char[] arr2 = t.toCharArray();
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) return false;
         }
         return true;
     }
