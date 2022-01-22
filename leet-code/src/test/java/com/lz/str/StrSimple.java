@@ -353,6 +353,65 @@ public class StrSimple {
         return arr02[t.length()-1];
     }
 
+    /**
+     * 392. 判断子序列
+     */
+    public boolean isSubsequence(String s, String t) {
+        if (s.length() > t.length()) return false;
+        int index = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            boolean flag = false;
+            for (int j = index; j < t.length(); j++) {
+                if (t.charAt(j) == c) {
+                    index = j + 1;
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) return false;
+        }
+        return true;
+    }
+
+    /**
+     * 409. 最长回文串
+     */
+    public int longestPalindrome(String s) {
+        if (s == null || s.length() == 0) return 0;
+        Map<Character,Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            Integer count = map.getOrDefault(s.charAt(i), 0);
+            map.put(s.charAt(i), count+1);
+        }
+        int doubleCount = 0;
+        for (Map.Entry<Character, Integer> entity : map.entrySet()) {
+            Integer value = entity.getValue();
+            doubleCount += value/2;
+        }
+        if (2*doubleCount == s.length()) return 2*doubleCount;
+        else return 2*doubleCount +1;
+    }
+
+    public int longestPalindrome2(String s) {
+        if (s == null || s.length() == 0) return 0;
+        char[] chars = s.toCharArray();
+        Arrays.sort(chars);
+        int doubleCount = 0;
+        int i = 0;
+        while (i < s.length()-1) {
+            if (chars[i] == chars[i+1]) {
+                doubleCount ++;
+                i += 2;
+            }else {
+                i++;
+            }
+
+        }
+        if (2*doubleCount == s.length()) return 2*doubleCount;
+        else return 2*doubleCount +1;
+    }
+
 
     @Test
     public void test() {
