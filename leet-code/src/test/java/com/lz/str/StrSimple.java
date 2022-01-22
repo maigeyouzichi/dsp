@@ -434,10 +434,16 @@ public class StrSimple {
         return sb.reverse().toString();
     }
 
+    /**
+     * 459. 重复的子字符串
+     */
+    public boolean repeatedSubstringPattern(String s) {
+        return (s+s).substring(1,(s+s).length()-1).contains(s);
+    }
+
 
     @Test
     public void test() {
-        char[] chars = {'a','b','c'};
-        System.out.println(String.valueOf(chars));
+        System.out.println("abac".indexOf('a', 1));
     }
 }
