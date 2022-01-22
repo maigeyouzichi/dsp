@@ -2,6 +2,7 @@ package com.lz.str;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -336,6 +337,20 @@ public class StrSimple {
             if (count == 1) return i;
         }
         return -1;
+    }
+
+    /**
+     * 389. 找不同
+     */
+    public char findTheDifference(String s, String t) {
+        char[] arr01 = s.toCharArray();
+        char[] arr02 = t.toCharArray();
+        Arrays.sort(arr01);
+        Arrays.sort(arr02);
+        for (int i = 0; i < s.length(); i++) {
+            if (arr01[i] != arr02[i]) return arr02[i];
+        }
+        return arr02[t.length()-1];
     }
 
 
