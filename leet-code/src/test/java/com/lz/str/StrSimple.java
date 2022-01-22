@@ -412,6 +412,28 @@ public class StrSimple {
         else return 2*doubleCount +1;
     }
 
+    /**
+     * 415. 字符串相加
+     */
+    public String addStrings(String num1, String num2) {
+        int i = num1.length() -1;
+        int j = num2.length() -1;
+        int sum = 0;
+        int k = 0;
+        StringBuilder sb = new StringBuilder();
+        while (i >=0 || j >=0) {
+            sum += i>=0?num1.charAt(i)-'0' : 0;
+            sum += j>=0? num2.charAt(j)-'0': 0;
+            sb.append((sum+k)%10);
+            k = (sum +k )/10;
+            sum =0;
+            i --;
+            j --;
+        }
+        if (k > 0) sb.append(k);
+        return sb.reverse().toString();
+    }
+
 
     @Test
     public void test() {
