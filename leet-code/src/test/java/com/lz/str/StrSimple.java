@@ -3,6 +3,8 @@ package com.lz.str;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -276,9 +278,70 @@ public class StrSimple {
         }
     }
 
+    /**
+     * 345. 反转字符串中的元音字母
+     */
+    public String reverseVowels(String s) {
+        char[] chars = s.toCharArray();
+        int i = 0;
+        int j = s.length() -1;
+        char tmp = 0;
+        while (i < j) {
+            if (!isVowels(chars[i])) {
+                i ++;
+                continue;
+            }
+            if (!isVowels(chars[j])) {
+                j --;
+                continue;
+            }
+            tmp = chars[i];
+            chars[i] = chars[j];
+            chars[j] = tmp;
+            i ++;
+            j --;
+        }
+        return String.valueOf(chars);
+    }
+
+    private boolean isVowels(char c) {
+        switch (c) {
+            case 'a' :
+            case 'A' :
+            case 'e' :
+            case 'E' :
+            case 'i' :
+            case 'I' :
+            case 'o' :
+            case 'O' :
+            case 'u' :
+            case 'U' :
+                return true;
+            default: return false;
+        }
+    }
+
+    /**
+     * 387. 字符串中的第一个唯一字符
+     */
+    public int firstUniqChar(String s) {
+        if (s == null || s.length() == 0) return -1;
+        Map<Character,Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            Integer count = map.getOrDefault(s.charAt(i), 0);
+            map.put(s.charAt(i), count+1);
+        }
+        for (int i = 0; i < s.length(); i++) {
+            Integer count = map.get(s.charAt(i));
+            if (count == 1) return i;
+        }
+        return -1;
+    }
+
 
     @Test
     public void test() {
-        addBinary("1010", "1011");
+        char[] chars = {'a','b','c'};
+        System.out.println(String.valueOf(chars));
     }
 }
