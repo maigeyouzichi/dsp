@@ -23,7 +23,7 @@ public class DynamicProgrammingMid {
         char[] chars = s.toCharArray();
         int max = 1;
         int indexStart = 0;
-        //长度为1的子串
+        //长度为1或者2的子串
         for (int i = 0; i < s.length(); i++) {
             dp[i][i] = true;
             if (i < s.length() - 1 && chars[i] == chars[i + 1]) {
@@ -46,6 +46,7 @@ public class DynamicProgrammingMid {
                 }
             }
         }
+        //获取子串的起始索引和长度即可
         return s.substring(indexStart, indexStart + max);
     }
 
