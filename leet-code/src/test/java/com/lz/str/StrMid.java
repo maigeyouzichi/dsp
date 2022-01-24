@@ -1,5 +1,12 @@
 package com.lz.str;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * 字符串-中等
  */
@@ -58,6 +65,13 @@ public class StrMid {
             }
         }
         return s.substring(startIndex,startIndex+maxLen);
+    }
+
+    @Test
+    public void test() {
+        HashMap<Integer, Integer> map = new HashMap<>(2);
+        System.out.println(map.put(0, 0));
+        System.out.println(map.put(0, 1));
     }
 
 }
