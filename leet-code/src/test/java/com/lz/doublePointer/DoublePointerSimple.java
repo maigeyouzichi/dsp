@@ -1,7 +1,9 @@
 package com.lz.doublePointer;
 
 import com.lz.entity.ListNode;
+import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,5 +81,78 @@ public class DoublePointerSimple {
         head = head.next;
         tmp.next = null;
         return head;
+    }
+    /**
+     * 75,颜色分类
+     */
+    public void sortColors(int[] nums) {
+        int i = 0;
+        int j = nums.length-1;
+        int k = 0;
+        int tmp = 0;
+        while (i<j) {
+            if (nums[i] == 0) {
+                i ++;
+                continue;
+            }
+            if (nums[j] != 0) {
+                j --;
+                continue;
+            }
+            tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+            i ++;
+            j --;
+        }
+        if (nums[i] == 0) i ++;
+        j = nums.length -1;
+        while (i < j) {
+            if (nums[i] == 1) {
+                i ++;
+                continue;
+            }
+            if (nums[j] != 1) {
+                j --;
+                continue;
+            }
+            tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+            i ++;
+            j --;
+        }
+    }
+
+    /**
+     * 75,颜色分类
+     *  -- 单指针
+     */
+    public void sortColors02(int[] nums){
+        int p = 0;
+        int tmp = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                tmp = nums[i];
+                nums[i] = nums[p];
+                nums[p] = tmp;
+                p ++;
+            }
+        }
+        for (int i = p; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                tmp = nums[i];
+                nums[i] = nums[p];
+                nums[p] = tmp;
+                p ++;
+            }
+        }
+    }
+
+    @Test
+    void test() {
+        int[] arr = {2,0,2,1,1,0};
+        sortColors(arr);
+        System.out.println(Arrays.toString(arr));
     }
 }
