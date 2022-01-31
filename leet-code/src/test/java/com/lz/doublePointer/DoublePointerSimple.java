@@ -3,10 +3,12 @@ package com.lz.doublePointer;
 import com.lz.entity.ListNode;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 双指针 简单
  */
+@SuppressWarnings("all")
 public class DoublePointerSimple {
 
     /**
@@ -54,6 +56,28 @@ public class DoublePointerSimple {
             }
             tmpNode.next = tmpNode.next.next;
         }
+        return head;
+    }
+
+    /**
+     * 61. 旋转链表
+     */
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null || head.next == null) return head;
+        ListNode tmpNode = head;
+        int nodeLength = 1;
+        while (tmpNode.next != null) {
+            tmpNode = tmpNode.next;
+            nodeLength ++;
+        }
+        tmpNode.next = head;
+        k = k % nodeLength;
+        for (int i = 0; i < nodeLength-k-1; i++) {
+            head = head.next;
+        }
+        ListNode tmp = head;
+        head = head.next;
+        tmp.next = null;
         return head;
     }
 }
