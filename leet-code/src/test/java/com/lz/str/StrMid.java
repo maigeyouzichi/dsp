@@ -72,6 +72,7 @@ public class StrMid {
         HashMap<Integer, Integer> map = new HashMap<>(2);
         System.out.println(map.put(0, 0));
         System.out.println(map.put(0, 1));
+        ConcurrentHashMap<Object, Object> objectObjectConcurrentHashMap = new ConcurrentHashMap<>();
     }
 
 }
