@@ -1,4 +1,4 @@
-package com.lz;
+package com.lz.other;
 
 import com.lz.entity.ListNode;
 import org.junit.jupiter.api.Test;
@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Test;
  * @author lihao
  * @date 2021-11-17 11:06
  */
+@SuppressWarnings("all")
 public class AddTwoNumbers {
 
     @Test

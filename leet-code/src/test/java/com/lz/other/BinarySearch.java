@@ -1,10 +1,11 @@
-package com.lz;
+package com.lz.other;
 
 /**
  * 二分查找
  * @author lihao
  * @date 2021-12-02 15:35
  */
+@SuppressWarnings("all")
 public class BinarySearch {
 
     /**

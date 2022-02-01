@@ -1,4 +1,4 @@
-package com.lz;
+package com.lz.other;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
  * @author lihao
  * @date 2021-11-17 12:56
  */
+@SuppressWarnings("ALL")
 public class LengthOfLongestSubstring {
 
     @Test
