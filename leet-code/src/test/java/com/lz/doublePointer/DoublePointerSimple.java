@@ -133,6 +133,25 @@ public class DoublePointerSimple {
         }
     }
 
+
+    /**
+     * 189. 轮转数组
+     */
+    public void rotate(int[] nums, int k) {
+        int[] tmp = Arrays.copyOfRange(nums, 0, nums.length);
+        int len = nums.length;
+        int index = len - k%len;
+        int index_ = 0;
+        for (int i = index; i <len; i++) {
+            nums[index_] = tmp[i];
+            index_ ++;
+        }
+        for (int i = 0; i <index; i++) {
+            nums[index_] = tmp[i];
+            index_ ++;
+        }
+    }
+
     @Test
     void test() {
         int[] arr = {2,0,2,1,1,0};
