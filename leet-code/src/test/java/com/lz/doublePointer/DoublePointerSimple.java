@@ -152,6 +152,52 @@ public class DoublePointerSimple {
         }
     }
 
+    /**
+     * 31. 下一个排列
+     * 思路: 从右向左,找到第一个降序的索引,再从右向左找到可以交换的数字,交换后,索引右边的数字升序排列
+     */
+    public void nextPermutation(int[] nums) {
+        int i = nums.length -2;
+        while (i >= 0) {
+            if (nums[i]>=nums[i+1]) {
+                i --;
+                continue;
+            }else {
+                break;
+            }
+        }
+        i = i>= 0 ? i : 0;
+        int j = nums.length -1;
+        while (i < j) {
+            if (nums[i]>=nums[j]){
+                j --;
+                continue;
+            }else {
+                break;
+            }
+        }
+        swrap(nums,i,j);
+        if (i ==0 && j ==0) {
+            i --;
+        }
+        reverse_(nums,i+1,nums.length-1);
+    }
+
+    private void reverse_(int[] nums, int i, int j) {
+        while (i < j) {
+            swrap(nums,i, j);
+            i ++;
+            j --;
+        }
+    }
+
+    private void swrap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+
+
     @Test
     void test() {
         int[] arr = {2,0,2,1,1,0};
