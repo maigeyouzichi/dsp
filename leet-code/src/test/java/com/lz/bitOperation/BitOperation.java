@@ -24,6 +24,26 @@ public class BitOperation {
         return true;
     }
 
+    /**
+     * 231. 2 的幂
+     */
+    public boolean isPowerOfTwo2(int n) {
+        return n>0 && (n & (n-1)) == 0;
+    }
+
+    /**
+     * 191. 位1的个数
+     */
+    public int hammingWeight(int n) {
+        int count = 0;
+        while (n != 0) {
+            count += n & 1;
+            n >>>= 1;
+        }
+        return count;
+    }
+
+
     @Test
     void test() {
         System.out.println(1 >> 1);
