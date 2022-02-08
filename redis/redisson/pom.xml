@@ -4,17 +4,23 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lz</groupId>
-        <artifactId>dsp</artifactId>
+        <artifactId>redis</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <packaging>pom</packaging>
-    <artifactId>redis</artifactId>
-    <modules>
-        <module>jedis</module>
-        <module>spring-redis</module>
-        <module>redisson</module>
-    </modules>
+    <artifactId>redisson</artifactId>
     <dependencies>
-
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.artifactId}</finalName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
