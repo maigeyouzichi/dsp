@@ -1,0 +1,6 @@
+spring:
+  redis:
+    host: 101.133.163.204
+    port: 6379
+    database: 0
+    timeout: 5000
