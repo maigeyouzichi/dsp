@@ -9,3 +9,5 @@ spring:
         max-active: 80
         max-wait: 30000
         timeout: 3000
+server:
+  port: 9001
