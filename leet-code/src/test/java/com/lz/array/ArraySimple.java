@@ -7,10 +7,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -37,12 +35,12 @@ public class ArraySimple {
     /**
      * 26. 删除有序数组中的重复项
      * <p>
-     * 1 2 3 4 3 3 3 4
+     * 1 2 3 4 5 3 4 4 5
      * p=0 1 2
      * q=1 2 3 4 5 6 7
      * 思路: 双指针遍历数组:
      * 如果p,q位置数据相同,q++
-     * 如果p,q位置数据不同,q下标数据和p+1下标数据交换,同时
+     * 如果p,q位置数据不同,q下标数据和p+1下标数据交换,同时p++
      */
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
@@ -61,6 +59,7 @@ public class ArraySimple {
 
     /**
      * 27,移除元素
+     * 就等于val的值交换到数组的最后,返回新数组的长度,如果i所在数字等于val,返回长度-1
      */
     public int removeElement(int[] nums, int val) {
         if (nums == null || nums.length == 0) return 0;
@@ -83,6 +82,7 @@ public class ArraySimple {
 
     /**
      * 35. 搜索插入位置
+     * 题目:给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
      */
     public int searchInsert(int[] nums, int target) {
         int i = 0;
@@ -106,6 +106,15 @@ public class ArraySimple {
 
     /**
      * 66,加一
+     * 题目:给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。
+     *
+     * 最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
+     *
+     * 你可以假设除了整数 0 之外，这个整数不会以零开头。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/plus-one
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      */
     public int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i >= 0; i--) {
@@ -123,6 +132,13 @@ public class ArraySimple {
 
     /**
      * 88,合并有序数组
+     * 给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。
+     *
+     * 请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/merge-sorted-array
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         m--;
@@ -303,12 +319,16 @@ public class ArraySimple {
                     if (j < 0) return;
                 }
                 for (int k = j; k < i; k++) {
-                    int tmp = nums[k];
-                    nums[k] = nums[k + 1];
-                    nums[k + 1] = tmp;
+                    swap(nums,k, k+1);
                 }
             }
         }
+    }
+
+    private void swap(int[] arr, int index1, int index2) {
+        int tmp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = tmp;
     }
 
     /**
@@ -397,6 +417,7 @@ public class ArraySimple {
 
     /**
      * 414,第三大的数
+     * 思路:指定一个标志变量
      */
     public int thirdMax(int[] nums) {
         Arrays.sort(nums);
