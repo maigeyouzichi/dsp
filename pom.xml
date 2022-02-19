@@ -64,6 +64,7 @@
     </dependencies>
     <modules>
         <module>dubbo</module>
+        <module>concurrent</module>
         <module>java-spi</module>
         <module>daily-test</module>
         <module>dubbo-spi</module>
