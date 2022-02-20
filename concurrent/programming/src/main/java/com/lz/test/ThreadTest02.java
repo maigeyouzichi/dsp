@@ -3,7 +3,7 @@ package com.lz.test;
 /**
  * 线程虚假唤醒
  * 本质就是唤醒的线程不符合唤醒的条件,缺少后续的判断使线程继续执行,造成最终的结果不正确.
- * 解决方式: 唤醒后的线程追加判断,不符合条件继续wait(),本例中使用while()代替if()
+ * 解决方式: 唤醒后的线程追加判断,不符合条件继续wait(),本例中使用while()代替if(),notifyAll替代notify是为了避免死锁
  * @author lihao
  */
 @SuppressWarnings("all")
