@@ -4,10 +4,11 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
 /**
+ * 线程三种启动方式
  * @author lihao
  */
 @SuppressWarnings("all")
-public class ThreadTest {
+public class ThreadTest01 {
 
     /**
      * 启动线程方式一: 继承Thread类,重写run()方法
