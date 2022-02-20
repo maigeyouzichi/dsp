@@ -1,4 +1,4 @@
-package com.lz.test;
+package com.lz.thread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
@@ -8,7 +8,7 @@ import java.util.concurrent.FutureTask;
  * @author lihao
  */
 @SuppressWarnings("all")
-public class ThreadTest01 {
+public class StartTest {
 
     /**
      * 启动线程方式一: 继承Thread类,重写run()方法

@@ -1,4 +1,4 @@
-package com.lz.test;
+package com.lz.thread;
 
 import java.util.concurrent.TimeUnit;
 
@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  * @author lihao
  */
 @SuppressWarnings("all")
-public class ThreadTest03 {
+public class WaitTest02 {
 
     public static void main(String[] args) {
         Object obj = new Object();

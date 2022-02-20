@@ -1,4 +1,4 @@
-package com.lz.test;
+package com.lz.thread;
 
 /**
  * 线程虚假唤醒
@@ -7,7 +7,7 @@ package com.lz.test;
  * @author lihao
  */
 @SuppressWarnings("all")
-public class ThreadTest02 {
+public class WaitTest01 {
 
 
     public static void main(String[] args) {
