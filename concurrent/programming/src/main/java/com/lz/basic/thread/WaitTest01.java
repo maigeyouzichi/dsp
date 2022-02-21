@@ -1,4 +1,4 @@
-package com.lz.thread;
+package com.lz.basic.thread;
 
 /**
  * 线程虚假唤醒

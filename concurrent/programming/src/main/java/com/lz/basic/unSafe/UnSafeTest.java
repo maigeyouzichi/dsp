@@ -1,4 +1,4 @@
-package com.lz.unSafe;
+package com.lz.basic.unSafe;
 
 import sun.misc.Unsafe;
 

@@ -1,4 +1,4 @@
-package com.lz.thread;
+package com.lz.basic.thread;
 
 /**
  * @author lihao on 2022/2/20
