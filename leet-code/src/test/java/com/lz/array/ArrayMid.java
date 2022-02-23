@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * 算法 -- 数组
  */
+@SuppressWarnings("all")
 public class ArrayMid {
 
     /**
@@ -73,6 +74,28 @@ public class ArrayMid {
                 else if (sum > target) right --;
                 else left ++;
             }
+        }
+        return result;
+    }
+
+    /**
+     * 2134. 最少交换次数来组合所有的 1 II
+     */
+    public int minSwaps(int[] nums) {
+        int left=0,right=0,len=nums.length,count = 0,result = Integer.MAX_VALUE;
+        //1的个数
+        for (int num : nums) {
+            count+=num;
+        }
+        int count2 = 0;
+        while (right<count-1) {
+            count2+=nums[right++];
+        }
+        while (left < len) {
+            count2 += nums[right%len];
+            result = Math.min(result,count-count2);
+            right ++;
+            count2 -= nums[left++];
         }
         return result;
     }
