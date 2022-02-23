@@ -14,6 +14,7 @@ public class UnSafeTest {
     public long state = 0;
 
     static {
+        //通过这种方式获取Unsafe累的实例的原因是Unsafe类只允许BootStrap加载,不允许appClassLoader进行加载.
         try {
             //使用反射获取Unsafe的成员变量theUnsafe
             Field field = Unsafe.class.getDeclaredField("theUnsafe");
