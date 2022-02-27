@@ -117,6 +117,32 @@ public class ArrayMid {
         return result;
     }
 
+    public int[] searchRange(int[] nums, int target) {
+        int indexLeft = binarySearch_(nums,target,true);
+        int indexRight = binarySearch_(nums,target, false);
+        return new int[]{indexLeft,indexRight};
+    }
+
+    int binarySearch_(int[] arr, int target, boolean flag) {
+        if (arr==null || arr.length==0) return -1;
+        int left = 0;
+        int right = arr.length-1;
+        int res = -1;
+        while (left<=right) {
+            int mid = left + (right - left)/2;
+            if (arr[mid]>target) {
+                right = mid -1;
+            }else if (arr[mid] == target) {
+                if(flag) right = mid -1;
+                if (!flag) left = mid + 1;
+                res = mid;
+            }else {
+                left = mid +1;
+            }
+        }
+        return res;
+    }
+
 
     @Test
     void test() {

@@ -1,5 +1,7 @@
 package com.lz.other;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * 二分查找
  * @author lihao
@@ -29,5 +31,56 @@ public class BinarySearch {
             }
         }
         return -1;
+    }
+
+    /**
+     * 二分查找寻找最左值
+     */
+    int binarySearch_(int[] arr, int target) {
+        if (arr==null || arr.length==0) return -1;
+        int left = 0;
+        int right = arr.length-1;
+        int res = -1;
+        while (left<=right) {
+            int mid = left + (right - left)/2;
+            if (arr[mid]>target) {
+                right = mid -1;
+            }else if (arr[mid] == target) {
+                right = mid -1;
+                res = mid;
+            }else {
+                left = mid +1;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 二分法查找最右值
+     */
+    int binarySearch__(int[] arr, int target) {
+        if (arr==null || arr.length==0) return -1;
+        int left = 0;
+        int right = arr.length-1;
+        int res = -1;
+        while (left<=right) {
+            int mid = left + (right - left)/2;
+            if (arr[mid]>target) {
+                right = mid -1;
+            }else if (arr[mid] == target) {
+                left = mid + 1;
+                res = mid;
+            }else {
+                left = mid +1;
+            }
+        }
+        return res;
+    }
+
+    @Test
+    public void test() {
+        int[] arr = {1,2,3,3,3,4,6};
+//        int[] arr = {2,2,2};
+        System.out.println(binarySearch__(arr, 5));
     }
 }
