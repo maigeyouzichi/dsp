@@ -30,6 +30,13 @@ public class ArrayMid {
 
     /**
      * 15 三数之和
+     * 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
+     *
+     * 注意：答案中不可以包含重复的三元组。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/3sum
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      */
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -60,6 +67,15 @@ public class ArrayMid {
 
     /**
      * 16. 最接近的三数之和
+     * 给你一个长度为 n 的整数数组 nums 和 一个目标值 target。请你从 nums 中选出三个整数，使它们的和与 target 最接近。
+     *
+     * 返回这三个数的和。
+     *
+     * 假定每组输入只存在恰好一个解。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/3sum-closest
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      */
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
@@ -80,6 +96,7 @@ public class ArrayMid {
 
     /**
      * 2134. 最少交换次数来组合所有的 1 II
+     * 思路: 滑动窗口,1的个数作为窗口的长度
      */
     public int minSwaps(int[] nums) {
         int left=0,right=0,len=nums.length,count = 0,result = Integer.MAX_VALUE;

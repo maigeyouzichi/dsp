@@ -59,6 +59,7 @@ public class ArraySimple {
 
     /**
      * 27,移除元素
+     * 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
      * 就等于val的值交换到数组的最后,返回新数组的长度,如果i所在数字等于val,返回长度-1
      */
     public int removeElement(int[] nums, int val) {
