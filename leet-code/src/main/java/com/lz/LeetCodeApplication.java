@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author lihao
+ *
  */
 @SpringBootApplication
 public class LeetCodeApplication {
