@@ -75,6 +75,7 @@
         <module>mysql</module>
         <module>redis</module>
         <module>aop</module>
+        <module>mongo</module>
     </modules>
 
     <build>
