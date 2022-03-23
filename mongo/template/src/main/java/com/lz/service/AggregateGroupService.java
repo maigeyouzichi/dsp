@@ -163,7 +163,7 @@ public class AggregateGroupService {
      */
     public Object aggregationGroupPush() {
         // 先对数据进行排序，然后使用管道操作符 $group 进行分组，然后以数组形式列出某字段的全部值
-        AggregationOperation push = Aggregation.group("sex").push("salary").as("salaryFirst");
+        AggregationOperation push = Aggregation.group("sex").push("age").as("age");
         // 将操作加入到聚合对象中
         Aggregation aggregation = Aggregation.newAggregation(push);
         // 执行聚合查询

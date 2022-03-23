@@ -76,6 +76,8 @@ public class DocumentTest {
      */
     @Test
     public void group() {
-        aggregateGroupService.aggregationGroupCount();
+//        aggregateGroupService.aggregationGroupCount();
+//        aggregateGroupService.aggregationGroupMax();
+        aggregateGroupService.aggregationGroupPush();
     }
 }
