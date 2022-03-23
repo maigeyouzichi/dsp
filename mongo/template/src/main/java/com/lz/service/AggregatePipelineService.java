@@ -22,7 +22,7 @@ public class AggregatePipelineService {
     /**
      * 设置集合名称
      */
-    private static final String COLLECTION_NAME = "users";
+    private static final String COLLECTION_NAME = "user1";
 
     @Resource
     private MongoTemplate mongoTemplate;
@@ -34,8 +34,8 @@ public class AggregatePipelineService {
      */
     public Object aggregateGroupMatch() {
         // 设置聚合条件，先使用 $match 过滤岁数大于 25 的用户，然后按性别分组，统计每组用户工资最高值
-        AggregationOperation match = Aggregation.match(Criteria.where("age").lt(25));
-        AggregationOperation group = Aggregation.group("sex").max("salary").as("sexSalary");
+        AggregationOperation match = Aggregation.match(Criteria.where("age").lt(5));
+        AggregationOperation group = Aggregation.group("sex").max("age").as("age");
         // 将操作加入到聚合对象中
         Aggregation aggregation = Aggregation.newAggregation(match, group);
         // 执行聚合查询

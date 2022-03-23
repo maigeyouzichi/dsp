@@ -18,7 +18,7 @@ public class RunCommandService {
      * @return 执行命令返回结果的 Json 结果
      * @description 执行自定义 mongoDB 命令
      */
-    public Object runCommand() {
+    public Document runCommand() {
         // 自定义命令
         String jsonCommand = "{\"buildInfo\":1}";
         // 将 JSON 字符串解析成 MongoDB 命令
