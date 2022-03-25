@@ -4,18 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lz</groupId>
-        <artifactId>dubbo-spi</artifactId>
+        <artifactId>dsp</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>dubbo-spi-api</artifactId>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <artifactId>mongo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>template</module>
+    </modules>
     <dependencies>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>2.7.15</version>
-        </dependency>
+
     </dependencies>
+
 </project>
