@@ -75,6 +75,7 @@
         <module>mysql</module>
         <module>redis</module>
         <module>aop</module>
+        <module>unit-test</module>
     </modules>
 
     <build>
