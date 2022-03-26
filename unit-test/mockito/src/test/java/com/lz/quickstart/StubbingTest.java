@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import javax.security.auth.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
