@@ -1,8 +1,8 @@
-package com.lz;
+package com.lz.quickstart;
 
-import com.lz.controller.AccountLoginController;
-import com.lz.dao.AccountDao;
-import com.lz.entity.Account;
+import com.lz.common.AccountLoginController;
+import com.lz.common.AccountDao;
+import com.lz.common.Account;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

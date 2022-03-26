@@ -1,10 +1,7 @@
-package com.lz.controller;
+package com.lz.common;
 
 
-import com.lz.dao.AccountDao;
-import com.lz.entity.Account;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
