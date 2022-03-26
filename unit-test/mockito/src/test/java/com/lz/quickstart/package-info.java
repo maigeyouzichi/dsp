@@ -4,6 +4,12 @@
  * style two : @Mock + initMocks - {@link com.lz.quickstart.MockByAnnotationTest}
  * style three : @Rule - {@link com.lz.quickstart.MockByRuleTest}
  *
+ * DeepMock: 对mock出来的对象也进行mock - {@link com.lz.quickstart.DeepMockTest}
+ *
+ * stubbing:
+ *
+ *
+ *
  *
  * @author lihao on 2022/3/26
  */

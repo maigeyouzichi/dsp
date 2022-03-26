@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
  * @author lihao on 2022/3/26
  */
 @RunWith(MockitoJUnitRunner.class)
-public class AccountLoginControllerTest {
+public class QuickStart {
 
     private AccountDao accountDao;
 

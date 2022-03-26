@@ -5,7 +5,7 @@ package com.lz.common;
  */
 public class Account {
 
-    public String foo() {
-        return "Hi, i am Mock";
+    public Dog foo() {
+        throw new UnsupportedOperationException();
     }
 }
