@@ -1,11 +1,13 @@
 package com.lz.quickstart;
 
+import com.lz.common.StubbingService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import javax.security.auth.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +63,46 @@ public class StubbingTest {
         } catch (Exception e) {
             assertThat(e, instanceOf(RuntimeException.class));
         }
+    }
+
+    @Test
+    public void stubbingDoReturn() {
+        when(list.get(0)).thenReturn("first");
+        doReturn("second").when(list).get(1);
+        assertThat(list.get(0),equalTo("first"));
+        assertThat(list.get(1),equalTo("second"));
+    }
+
+    @Test
+    public void iterateSubbing() {
+//        when(list.size()).thenReturn(1,2,3,4);
+        when(list.size()).thenReturn(1).thenReturn(2).thenReturn(3).thenReturn(4);//和上面等价
+        assertThat(list.size(),equalTo(1));
+        assertThat(list.size(),equalTo(2));
+        assertThat(list.size(),equalTo(3));
+        assertThat(list.size(),equalTo(4));
+        assertThat(list.size(),equalTo(4));
+    }
+
+    @Test
+    public void stubbingWithAnswer() {
+        when(list.get(anyInt())).thenAnswer(mock -> {
+            Integer index = mock.getArgument(0, Integer.class);
+            return String.valueOf(index * 10);
+        });
+
+        assertThat(list.get(0), equalTo("0"));
+        assertThat(list.get(99), equalTo("990"));
+    }
+
+
+    @Test
+    public void stubbingWithRealCall() {
+        StubbingService stubbingService = mock(StubbingService.class);
+        when(stubbingService.getS()).thenReturn("Alex");
+        when(stubbingService.getI()).thenCallRealMethod();
+        assertThat(stubbingService.getS(), equalTo("Alex"));
+        assertThat(stubbingService.getI(), equalTo(10));
     }
 
     @After
