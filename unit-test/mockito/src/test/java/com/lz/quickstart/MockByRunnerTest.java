@@ -11,6 +11,7 @@ import static org.mockito.Mockito.mock;
 
 /**
  * mock方式1
+ * @RunWith(MockitoJUnitRunner.class)  这个不加也能跑 ...
  * @author lihao on 2022/3/26
  */
 @RunWith(MockitoJUnitRunner.class)
