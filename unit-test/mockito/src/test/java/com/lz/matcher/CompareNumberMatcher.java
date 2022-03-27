@@ -20,6 +20,10 @@ public class CompareNumberMatcher<T extends Number> extends BaseMatcher<T> {
         this.COMPARE = new DefaultNumberCompare<>(great);
     }
 
+    /**
+     * 外部的assertThat方法只关系这个方法的返回值是true还是false, true:断言成功 false:断言失败
+     * 置于怎么实现, 随你实现, 两个分别是: 1, 传入的actual 2,this的field,构造器中传入.
+     */
     @Override
     public boolean matches(Object actual) {
         return this.COMPARE.compare(operand,(T) actual);
