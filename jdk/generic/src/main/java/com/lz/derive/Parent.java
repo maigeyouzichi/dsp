@@ -1,18 +1,17 @@
-package com.lz;
+package com.lz.derive;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 泛型类
+ * 派生
  *
  * @author lihao on 2022/3/27
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Generic<T> {
-
-    private T key;
+@NoArgsConstructor
+public class Parent<E> {
+    private E value;
 }

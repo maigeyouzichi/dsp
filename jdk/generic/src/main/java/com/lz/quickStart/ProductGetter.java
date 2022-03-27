@@ -1,4 +1,4 @@
-package com.lz;
+package com.lz.quickStart;
 
 import javax.lang.model.element.VariableElement;
 import java.util.ArrayList;

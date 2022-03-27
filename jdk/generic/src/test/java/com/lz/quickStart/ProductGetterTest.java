@@ -1,5 +1,6 @@
-package com.lz;
+package com.lz.quickStart;
 
+import com.lz.quickStart.ProductGetter;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
