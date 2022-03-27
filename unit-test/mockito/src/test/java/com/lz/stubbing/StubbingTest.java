@@ -1,4 +1,4 @@
-package com.lz.quickstart;
+package com.lz.stubbing;
 
 import com.lz.common.StubbingService;
 import org.junit.After;

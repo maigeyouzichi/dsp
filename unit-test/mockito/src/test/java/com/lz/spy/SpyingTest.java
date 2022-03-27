@@ -1,32 +1,27 @@
-package com.lz.quickstart;
+package com.lz.spy;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
- * @author lihao on 2022/3/27
+ * 部分mock -- 非stubbing部分都是realMethod
+ * @author lihao on 2022/3/26
  */
-public class SpyAnnotationTest {
-
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-    }
-
-    @Spy
-    private List<String> list = new ArrayList<>();
+@RunWith(MockitoJUnitRunner.class)
+public class SpyingTest {
 
     @Test
     public void testSpy() {
+        List<String> realList = new ArrayList<>();
+        List<String> list = spy(realList);
         list.add("Mockito");
         list.add("PowerMock");
 
@@ -42,4 +37,5 @@ public class SpyAnnotationTest {
         assertThat(list.isEmpty(), equalTo(true));
         assertThat(list.size(), equalTo(0));
     }
+
 }

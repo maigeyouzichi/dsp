@@ -1,4 +1,4 @@
-package com.lz.quickstart;
+package com.lz.deepMock;
 
 import com.lz.common.Account;
 import com.lz.common.AccountDao;
