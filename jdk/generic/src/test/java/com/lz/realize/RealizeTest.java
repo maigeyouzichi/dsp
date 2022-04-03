@@ -4,7 +4,6 @@ import com.lz.quickStart.ProductGetter;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author lihao on 2022/3/27

@@ -64,4 +64,28 @@ public class WildcardTest {
         showAnimal(miniCats);
     }
 
+    private void showCat(List<? super Cat> list) {
+//        list.add(new MiniCat());
+//        list.add(new Cat());
+//        list.add(new Animal());
+        for (int i = 0; i < list.size(); i++) {
+            Cat cat = (Cat) list.get(i);
+            System.out.println(cat);
+        }
+    }
+
+    @Test
+    public void test5() {
+        List<Animal> animals = new ArrayList<>();
+        List<Cat> cats = new ArrayList<>();
+        List<MiniCat> miniCats = new ArrayList<>();
+
+        showCat(animals);
+        showCat(cats);
+//        showCat(miniCats); 类型校验不通过, 下限在Cat
+    }
+
+
+
+
 }
