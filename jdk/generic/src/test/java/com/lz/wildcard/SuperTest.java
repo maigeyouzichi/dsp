@@ -52,6 +52,6 @@ class Comparator2 implements Comparator<Cat> {
 class Comparator3 implements Comparator<MiniCat> {
     @Override
     public int compare(MiniCat o1, MiniCat o2) {
-        return o1.age - o2.age;
+        return o1.level - o2.level;
     }
 }
