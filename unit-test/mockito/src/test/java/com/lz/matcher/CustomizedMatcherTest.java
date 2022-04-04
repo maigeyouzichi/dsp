@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
  * @author lihao on 2022/3/27
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CustomizedMatcher {
+public class CustomizedMatcherTest {
 
     @Test
     public void test() {
