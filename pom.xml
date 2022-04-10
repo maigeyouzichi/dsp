@@ -78,6 +78,7 @@
         <module>unit-test</module>
         <module>mongo</module>
         <module>jdk</module>
+        <module>es</module>
     </modules>
 
     <build>
