@@ -146,13 +146,13 @@ public class DynamicProgrammingSimple {
     }
 
     int maxProfit02(int[] prices) {
-        int min = Integer.MAX_VALUE;
-        int max = 0;
+        int min = Integer.MAX_VALUE;//最低价
+        int res = 0;//结果
         for (int price : prices) {
-            max = Math.max(max, price - min);
+            res = Math.max(res, price - min);
             min = Math.min(min, price);
         }
-        return max;
+        return res;
     }
 
     /**

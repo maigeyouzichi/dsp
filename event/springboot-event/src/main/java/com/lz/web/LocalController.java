@@ -1,6 +1,6 @@
 package com.lz.web;
 
-import com.lz.event.LocalEvent;
+import com.lz.event.OtherEvent;
 import lombok.SneakyThrows;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public class LocalController {
     @SneakyThrows
     @GetMapping("/event/publish")
     public String publish() {
-        publisher.publishEvent(new LocalEvent("","Hello World"));
+        publisher.publishEvent(new OtherEvent("","Hello World"));
         TimeUnit.SECONDS.sleep(5);
         return "success";
     }
