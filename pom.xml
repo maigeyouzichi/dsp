@@ -64,6 +64,7 @@
         </dependency>
     </dependencies>
     <modules>
+        <module>event</module>
         <module>dubbo</module>
         <module>concurrent</module>
         <module>java-spi</module>
