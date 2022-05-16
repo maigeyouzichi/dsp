@@ -15,4 +15,10 @@ public class Test001 {
         System.out.println(j);
         System.out.println(k);
     }
+
+    @Test
+    public void test002() {
+        String str = 123+"";
+        char[] chars = str.toCharArray();
+    }
 }
