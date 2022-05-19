@@ -4,6 +4,8 @@ import com.lz.entity.ListNode;
 import lombok.val;
 import org.junit.Test;
 
+import java.util.HashSet;
+
 /**
  * @author lihao on 2022/3/1
  */
@@ -65,5 +67,22 @@ public class NodeListSimple {
             System.out.println(res.val);
             res = res.next;
         }
+    }
+
+    @Test
+    public void test002(){
+        ListNode a = null;
+        ListNode b = null;
+        System.out.println(a==b);
+
+        System.out.println((int) 'a');
+        System.out.println((int)'A');
+
+        System.out.println((char) 65);
+
+        System.out.println((char) ('A'+(66-'A')));
+
+        StringBuilder bd = new StringBuilder();
+        bd.reverse().toString();
     }
 }
