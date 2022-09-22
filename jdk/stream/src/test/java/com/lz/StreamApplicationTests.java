@@ -1,5 +1,6 @@
 package com.lz;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,6 +36,17 @@ class StreamApplicationTests {
 
     @Test
     void test003() {
-
+        ArrayList<Integer> list = new ArrayList<>(2);
+        Integer[] arr = new Integer[2];
+        Integer a = 1;
+        Integer b = 2;
+        list.add(a);
+        list.add(b);
+        arr[0] = a;
+        arr[1] = b;
+        a = 10;
+        b = 100;
+        System.out.println(list);
+        System.out.println(Arrays.toString(arr));
     }
 }
