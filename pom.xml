@@ -82,6 +82,7 @@
         <module>es</module>
         <module>rest-client</module>
         <module>springboot-mq</module>
+        <module>flink</module>
     </modules>
 
     <build>
