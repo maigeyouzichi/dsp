@@ -1,11 +1,11 @@
 package com.lz;
 
 import com.lz.entity.Apple;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.PriorityQueue;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * @author lihao on 2022/5/8
@@ -40,5 +40,26 @@ public class FinalTest {
     @Test
     public void test03() {
         Apple jay = Apple.builder().age(11).name("Jay").build();
+    }
+
+    @Test
+    public void test04() {
+        int[] arr = {2,7,4,1,8,1};
+        System.out.println(lastStoneWeight(arr));
+    }
+
+    public int lastStoneWeight(int[] stones) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>((o1,o2) -> o2 - o1);
+        for (int stone : stones) {
+            pq.offer(stone);
+        }
+        while(pq.size() > 1) {
+            int a = pq.poll();
+            int b = pq.poll();
+            if(a == b) continue;
+            pq.offer(Math.abs(a-b));
+        }
+        if(pq.isEmpty()) return 0;
+        return pq.poll();
     }
 }
