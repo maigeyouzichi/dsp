@@ -9,14 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Apple implements Comparable<Apple> {
+public class Orange {
     private Integer id;
     private Integer weight;
-
-    private Integer country;
-
-    @Override
-    public int compareTo(Apple o) {
-        return this.weight - o.getWeight();
-    }
 }
