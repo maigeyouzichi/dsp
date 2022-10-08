@@ -12,5 +12,6 @@
     <modules>
         <module>generic</module>
         <module>stream</module>
+        <module>java8</module>
     </modules>
 </project>
