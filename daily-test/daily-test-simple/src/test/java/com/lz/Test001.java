@@ -80,4 +80,14 @@ public class Test001 {
         }
         return magic;
     }
+
+    @Test
+    public void test004() {
+        String str = "  a   b       ";
+        String[] s = str.split(" ");
+        System.out.println(Arrays.toString(s));
+        for (String s1 : s) {
+            System.out.println(s1.length());
+        }
+    }
 }
