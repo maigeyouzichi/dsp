@@ -53,4 +53,27 @@ public class TestText {
             System.out.println(format);
         }
     }
+
+    public int maxChunksToSorted(int[] arr) {
+        int currIndex = 0;
+        int count = 0;
+        int[] target = new int[arr.length];
+        for(int i=0;i<arr.length;i++) {
+            target[arr[i]] = i;
+        }
+        while(currIndex<arr.length) {
+            currIndex = nextIndex(arr,target,currIndex)+1;
+            count++;
+        }
+        return count;
+    }
+
+    private int nextIndex(int[] arr, int[] target, int currIndex) {
+        int nextIndex = Math.max(target[arr[currIndex]],target[currIndex]);
+        for(int i=currIndex;i<=nextIndex;i++) {
+            int tmpIndex = Math.max(target[arr[i]],target[i]);
+            nextIndex = Math.max(nextIndex,tmpIndex);
+        }
+        return nextIndex;
+    }
 }
