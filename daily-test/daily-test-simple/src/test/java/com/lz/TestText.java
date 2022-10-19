@@ -2,10 +2,13 @@ package com.lz;
 
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Lists;
-import org.junit.jupiter.api.Test;
-
+import com.lz.entity.ListNode;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author lihao
@@ -75,5 +78,42 @@ public class TestText {
             nextIndex = Math.max(nextIndex,tmpIndex);
         }
         return nextIndex;
+    }
+
+    public ListNode sortList(ListNode head) {
+        List<ListNode> container = new ArrayList<>();
+        while(head != null) {
+            container.add(head);
+            head = head.next;
+        }
+        ListNode rns = new ListNode();
+        ListNode curr = rns;
+        List<ListNode> newList = container.stream().sorted(Comparator.comparingInt(o -> o.val)).collect(Collectors.toList());
+        for (ListNode node : newList) {
+            curr.next = node;
+            curr = curr.next;
+        }
+        curr.next = null;
+        return rns.next;
+    }
+
+
+    public int countStudents(int[] students, int[] sandwiches) {
+        //不同口味的学生的数量
+        int stuNum_0 = 0, stuNum_1 = 0;
+        for(int taste: students) {
+            if(taste == 1) {
+                stuNum_1++;
+            }else {
+                stuNum_0++;
+            }
+        }
+        for(int taste: sandwiches) {
+            if(taste == 0 && stuNum_0 == 0) return stuNum_1;
+            if(taste == 1 && stuNum_1 == 0) return stuNum_0;
+            if(taste == 0) stuNum_0--;
+            if(taste == 1) stuNum_1--;
+        }
+        return 0;
     }
 }
