@@ -9,6 +9,7 @@ class ProgrammingApplicationTests {
     @Test
     void contextLoads() {
         System.out.println("hello world");
+        new Thread().start();
     }
 
 }

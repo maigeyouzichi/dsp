@@ -2,6 +2,7 @@ package com.lz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * springboot内置的事件监听,详细文章:
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 如果需要统一事务,可以参考:@TransactionEventListener,文章: https://juejin.cn/book/7049273428938850307/section/7049662725185781792
  */
 @SpringBootApplication
+@EnableAsync
 public class SpringbootEventApplication {
 
     public static void main(String[] args) {
