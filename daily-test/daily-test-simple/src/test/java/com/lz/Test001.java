@@ -2,14 +2,19 @@ package com.lz;
 
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
+import com.lz.entity.Apple;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.junit.Test;
 
 @SuppressWarnings("all")
@@ -136,5 +141,48 @@ public class Test001 {
         long id = snowflake.nextId();
         System.out.println((id+"").length());
         System.out.println(id);
+    }
+
+    @Test
+    public void test009() {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        System.out.println(map.putIfAbsent(1, 100));
+        System.out.println(map.putIfAbsent(1, 2));
+        System.out.println(map.putIfAbsent(1,3));
+        System.out.println(map.get(1));
+    }
+
+    @Test
+    public void test010() {
+        ArrayList<Integer> top = new ArrayList<>();
+        ArrayList<Integer> nottop = new ArrayList<>();
+        top.add(2);
+        top.add(4);
+        nottop.add(3);
+        nottop.add(2);
+        top.addAll(nottop);
+        System.out.println(top);
+    }
+
+    @Test
+    public void test011() {
+        List<Apple> apples = new ArrayList<>();
+        apples.add(Apple.builder().age(10).build());
+        apples.add(Apple.builder().age(11).build());
+        apples.add(Apple.builder().age(21).build());
+        apples.add(Apple.builder().age(22).build());
+        System.out.println(apples);
+        List<Apple> applesA = apples.stream().filter(e -> e.getAge() > 20).peek(e -> e.setName("Jack")).collect(Collectors.toList());
+        System.out.println(applesA);
+        List<Apple> applesB = apples.stream().filter(e -> e.getAge() < 20).collect(Collectors.toList());
+        System.out.println(applesB);
+        applesA.addAll(applesB);
+        System.out.println(applesA);
+    }
+
+    @Test
+    public void test012() {
+        System.out.println(1534236469);
+        System.out.println(Integer.MAX_VALUE);
     }
 }

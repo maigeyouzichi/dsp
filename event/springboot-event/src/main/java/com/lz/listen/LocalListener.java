@@ -37,8 +37,16 @@ public class LocalListener {
      * 根据事件对象进行监听,不同的事件监听之间是隔离的
      */
     @EventListener
-    @Async
+    @Async("usrEventExecutor")
     public void messageHandler(OtherEvent event) {
+        log.info("Other触发事件监听 ...");
+        log.info("Other监听消息内容: {}",event.getMessage());
+        throw new RuntimeException("主动异常");
+    }
+
+    @EventListener
+    @Async("usrEventExecutor2")
+    public void messageHandler2(OtherEvent event) {
         log.info("Other触发事件监听 ...");
         log.info("Other监听消息内容: {}",event.getMessage());
         throw new RuntimeException("主动异常");

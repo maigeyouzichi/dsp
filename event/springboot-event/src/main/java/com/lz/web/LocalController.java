@@ -24,7 +24,7 @@ public class LocalController {
     @SneakyThrows
     @GetMapping("/event/publish")
     public String publish() {
-        publisher.publishEvent(new OtherEvent("","Hello World"));
+        publisher.publishEvent(new OtherEvent(new Object(),"Hello World"));
         TimeUnit.SECONDS.sleep(5);
         return "success";
     }

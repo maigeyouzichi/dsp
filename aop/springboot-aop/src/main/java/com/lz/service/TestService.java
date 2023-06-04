@@ -2,6 +2,10 @@ package com.lz.service;
 
 
 import com.lz.anno.AspectLog;
+import com.lz.anno.UserEventRecord;
+import com.lz.bizEnum.UserEventEnum;
+import com.lz.controller.req.LoginReq;
+import com.lz.controller.req.LoginReq2;
 import com.lz.entity.Order;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -46,5 +50,30 @@ public class TestService {
             throw new RetryException("重试异常 ..");
         }
         return "success";
+    }
+
+    @UserEventRecord(event = UserEventEnum.LOGIN)
+    public void login(LoginReq req, LoginReq2 req2) {
+
+    }
+
+    @UserEventRecord(event = UserEventEnum.LOGIN)
+    public void login2() {
+
+    }
+
+    @UserEventRecord(event = UserEventEnum.LOGIN)
+    public void login3(String name) {
+
+    }
+
+    @UserEventRecord(event = UserEventEnum.LOGIN)
+    public void login4(String name, Integer age) {
+
+    }
+
+    @UserEventRecord(event = UserEventEnum.LOGIN)
+    public void login5(String name, LoginReq req) {
+
     }
 }
