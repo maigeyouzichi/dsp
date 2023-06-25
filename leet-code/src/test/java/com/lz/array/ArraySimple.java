@@ -1,15 +1,20 @@
 package com.lz.array;
 
-import org.junit.jupiter.api.Test;
-
+import com.lz.entity.ListNode;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.junit.jupiter.api.Test;
 
 /**
  * 数组类型题目 -- 简单
@@ -585,8 +590,91 @@ public class ArraySimple {
 
     @Test
     void test() {
-        Map<Integer, Integer> map = new HashMap<>();
-        System.out.println(map.getOrDefault(1, 1));
+        int[] arr = {1,1,1,-4};
+        System.out.println(singleNumber2(arr));
+    }
+
+    public int singleNumber2(int[] nums) {
+        int[] arr = new int[32];
+        for(int num: nums) {
+            for(int i=0;i<32;i++) {
+                arr[31-i] += (num>>i)&1;
+            }
+        }
+        int rns = 0;
+        for(int i=0;i<32;i++) {
+            rns += (arr[i]%3)<<(31-i);
+        }
+        return rns;
+    }
+
+    public int subarraySum(int[] nums, int k) {
+        Map<Integer,Integer> map = new HashMap<>();
+        map.put(0, 1);//为了包含index从0开始的子数组,前缀和刚好等于k的时候,count++
+        int count = 0,tmpSum = 0;
+        for(int nu: nums) {
+            tmpSum += nu;
+            if(map.containsKey(tmpSum-k)) count += map.get(tmpSum-k);
+            map.put(tmpSum,map.getOrDefault(tmpSum, 0)+1);
+        }
+        return count;
+    }
+
+    public int longestConsecutive(int[] nums) {
+        Map<Integer,Integer> map = new HashMap<>();
+        int maxLen = 0,currLen = 0;
+        for(int num: nums) {
+            if(map.containsKey(num)) continue;
+            int left = map.getOrDefault(num-1,0);
+            int right = map.getOrDefault(num+1,0);
+            currLen = left+right+1;
+            map.put(num,currLen);
+            maxLen = Math.max(maxLen, currLen);
+            map.put(num-left, currLen);
+            map.put(num+right, currLen);
+        }
+        return maxLen;
+    }
+
+    private void testLinkedList() {
+        Deque<Integer> stack = new LinkedList<>();
+        Queue<Integer> queue1 = new LinkedList<>();
+        queue1.offer(1);
+        queue1.poll();
+        new LinkedList().removeFirst();
+        Queue<Integer> queue2 = new ArrayDeque<>();
+        Queue<Integer> queue3 = new PriorityQueue<>();
+    }
+
+    private List<String> rns = new ArrayList<>();
+    private StringBuilder sb = new StringBuilder();
+    private boolean[] bitArr;//判断是否存在于StringBuilder中
+    char[] chars;//所有元素
+    int k;//初始字符串大小
+    int count = 0;
+    public String[] permutation(String S) {
+        bitArr = new boolean[S.length()];
+        k = S.length();
+        chars = S.toCharArray();
+        backTracing();
+        return rns.toArray(new String[rns.size()]);
+    }
+
+    private void backTracing() {
+        if (count == k) {
+            rns.add(sb.toString());
+            return;
+        }
+        for (int i=0;i<chars.length;i++) {
+            if (bitArr[i]) continue;
+            sb.append(chars[i]);
+            bitArr[i] = true;
+            count++;
+            backTracing();
+            count--;
+            sb.deleteCharAt(count);
+            bitArr[i] = false;
+        }
     }
 
     public int[][] merge(int[][] intervals) {
@@ -619,5 +707,75 @@ public class ArraySimple {
             }
         }
         return tmpList.toArray(new int[tmpList.size()][]);
+    }
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) return head;
+        boolean[] bitArr = new boolean[201];
+        ListNode virtualNode = new ListNode();
+        ListNode pre = virtualNode;
+        ListNode curr = head;
+        while(curr != null) {
+            if(!bitArr[curr.val+100] && (curr.next == null || curr.val != curr.next.val)) {
+                pre.next = curr;
+                pre = pre.next;
+            }
+            bitArr[curr.val+100] = true;
+            curr = curr.next;
+        }
+        return virtualNode.next;
+    }
+
+    public int nthUglyNumber(int n) {
+        PriorityQueue<Long> pq = new PriorityQueue<>();
+        Set<Long> set = new HashSet<>();
+        Long[] arr = {2L,3L,5L};
+        pq.offer(1L);
+        int count = 0;
+        while(!pq.isEmpty()) {
+            Long curr = pq.poll();
+            count ++;
+            if(count == n) return Math.toIntExact(curr);
+            for(Long num: arr) {
+                Long tmp = curr*num;
+                if(set.add(tmp)) pq.offer(tmp);
+            }
+        }
+        return 0;
+    }
+
+    public int[] dailyTemperatures(int[] temperatures) {
+        LinkedList<Integer> stack = new LinkedList<>();
+        int[] rns = new int[temperatures.length];
+        for(int i=0;i<temperatures.length;i++) {
+            while(!stack.isEmpty() && temperatures[stack.peek()]<temperatures[i]) {
+                int currIndex = stack.pop();
+                rns[currIndex] = i-currIndex;
+            }
+            stack.push(temperatures[i]);
+        }
+        return rns;
+    }
+
+    public String predictPartyVictory(String senate) {
+        int len = senate.length();
+        char[] charArray = senate.toCharArray();
+        LinkedList<Integer> queue_D = new LinkedList<>();
+        LinkedList<Integer> queue_R = new LinkedList<>();
+        for (int i=0;i<len;i++) {
+            if (charArray[i] == 'D') {queue_D.offer(i);} else {queue_R.offer(i);}
+        }
+        while (!queue_R.isEmpty() || !queue_D.isEmpty()) {
+            if (queue_R.isEmpty()) return "Dire";
+            if (queue_D.isEmpty()) return "Radiant";
+            if (queue_D.peek()<queue_R.peek()) {
+                queue_D.offer(queue_D.poll()+len);
+                queue_R.poll();
+            }
+            if (queue_D.peek()>queue_R.peek()) {
+                queue_R.offer(queue_R.poll()+len);
+                queue_D.poll();
+            }
+        }
+        return "";
     }
 }

@@ -1,12 +1,10 @@
 package com.lz.entity;
 
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-import java.io.Serializable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 苹果类-- 测试final
@@ -14,12 +12,11 @@ import java.io.Serializable;
  * @author lihao on 2022/5/8
  */
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@ToString
-@Getter
-@Setter
+@Data
 public class Apple implements Serializable {
 
-    private final String name;
-    private final Integer age;
+    private String name;
+    private Integer age;
 }

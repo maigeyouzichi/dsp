@@ -4,6 +4,7 @@ import com.lz.event.LocalEvent;
 import com.lz.event.OtherEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -36,8 +37,18 @@ public class LocalListener {
      * 根据事件对象进行监听,不同的事件监听之间是隔离的
      */
     @EventListener
+    @Async("usrEventExecutor")
     public void messageHandler(OtherEvent event) {
         log.info("Other触发事件监听 ...");
         log.info("Other监听消息内容: {}",event.getMessage());
+        throw new RuntimeException("主动异常");
+    }
+
+    @EventListener
+    @Async("usrEventExecutor2")
+    public void messageHandler2(OtherEvent event) {
+        log.info("Other触发事件监听 ...");
+        log.info("Other监听消息内容: {}",event.getMessage());
+        throw new RuntimeException("主动异常");
     }
 }
