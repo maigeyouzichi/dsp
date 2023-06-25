@@ -3,12 +3,13 @@ package com.lz;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Lists;
 import com.lz.entity.ListNode;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.Test;
 
 /**
  * @author lihao
@@ -115,5 +116,25 @@ public class TestText {
             if(taste == 1) stuNum_1--;
         }
         return 0;
+    }
+
+
+    @Test
+    public void test003() {
+        for (int i=0;i<=127;i++) {
+            char c = (char) i;
+            System.out.println(""+c);
+        }
+//        char c = ' ';
+//        System.out.println(Integer.valueOf(c));
+    }
+
+    @Test
+    public void test004() {
+        String str = "!#$&*+-= .";
+        char[] chars = str.toCharArray();
+        for (char aChar : chars) {
+            System.out.println(Integer.valueOf(aChar));
+        }
     }
 }

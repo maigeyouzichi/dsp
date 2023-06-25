@@ -589,4 +589,35 @@ public class ArraySimple {
         System.out.println(map.getOrDefault(1, 1));
     }
 
+    public int[][] merge(int[][] intervals) {
+        int[] target = new int[10000];//index = 区间第一个元素,value= 原数组索引
+        int[] sortedArr = new int[intervals.length];
+        for(int i=0;i<intervals.length;i++) {
+            if(i>0 && intervals[target[intervals[i][0]]][0]== intervals[i][0] && intervals[target[intervals[i][0]]][1] == intervals[i][1]) continue;
+            target[intervals[i][0]] = i;
+            sortedArr[i] = intervals[i][0];
+        }
+        Arrays.sort(sortedArr);
+        int first = 0, second = 1;
+        List<int[]> tmpList = new ArrayList<>();
+        while(first < sortedArr.length) {
+            int firstValueLeft = intervals[target[sortedArr[first]]][0];
+            int firstValueRight = intervals[target[sortedArr[first]]][1];
+            if(second >= sortedArr.length) {
+                tmpList.add(new int[]{firstValueLeft,firstValueRight});
+                break;
+            }
+            int secondValueLeft = intervals[target[sortedArr[second]]][0];
+            int secondValueRight = intervals[target[sortedArr[second]]][1];
+            if(firstValueRight >= secondValueLeft) {
+                intervals[target[sortedArr[first]]][1] = Math.max(firstValueRight,secondValueRight);
+                second ++;
+            }else {
+                tmpList.add(new int[]{firstValueLeft,firstValueRight});
+                first = second;
+                second = first + 1;
+            }
+        }
+        return tmpList.toArray(new int[tmpList.size()][]);
+    }
 }
