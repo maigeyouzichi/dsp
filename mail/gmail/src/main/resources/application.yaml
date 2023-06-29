@@ -1,1 +1,12 @@
-
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: maigeyouzichi2@gmail.com
+    password: Yigeren4779600
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
