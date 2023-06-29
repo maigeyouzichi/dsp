@@ -83,6 +83,7 @@
         <module>rest-client</module>
         <module>springboot-mq</module>
         <module>flink</module>
+        <module>mail</module>
     </modules>
 
     <build>
