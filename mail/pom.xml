@@ -15,6 +15,7 @@
     </properties>
     <modules>
         <module>gmail</module>
+        <module>ses</module>
     </modules>
 
 </project>
