@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-ses</artifactId>
+            <artifactId>aws-java-sdk-sesv2</artifactId>
             <version>1.12.472</version>
         </dependency>
         <dependency>

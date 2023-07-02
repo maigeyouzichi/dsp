@@ -14,9 +14,9 @@ public class MyService {
     }
 
     public void sendNotification() {
-        String to = "recipient@example.com";
+        String to = "maigeyouzichi@gmail.com";
         String subject = "Notification";
-        String body = "This is a notification email.";
+        String body = "hello, deer pomelo";
         emailService.sendEmail(to, subject, body);
     }
 }

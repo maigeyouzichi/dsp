@@ -1,9 +1,9 @@
 spring:
   mail:
-    host: email-smtp.us-west-2.amazonaws.com
+    host: email-smtp.ap-southeast-2.amazonaws.com
     port: 587
-    username: {SMTP_USERNAME}
-    password: {SMTP_PASSWORD}
+    username: 'AKIA4KRFSZIY5APNIXPU'
+    password: 'BF4UqpSu9U6JgI5uysKJyrikzvvVeKgHPCQ/to9pSIFv'
     properties:
       mail:
         smtp:
