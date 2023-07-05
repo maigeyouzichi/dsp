@@ -14,9 +14,10 @@ public class MyService {
     }
 
     public void sendNotification() {
-        String to = "maigeyouzichi@gmail.com";
-        String subject = "Notification";
-        String body = "hello, deer pomelo";
-        emailService.sendEmail(to, subject, body);
+        emailService.sendEmail(
+            "maigeyouzichi@gmail.com",
+            "Log in to dFans.xyz",
+            "Welcome to dfans.xyz\nVerification code is:"+ "123456" + "\nThis code expires in 20 minutes."
+        );
     }
 }
