@@ -84,6 +84,7 @@
         <module>springboot-mq</module>
         <module>flink</module>
         <module>mail</module>
+        <module>auth</module>
     </modules>
 
     <build>
