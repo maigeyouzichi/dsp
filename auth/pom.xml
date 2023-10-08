@@ -14,6 +14,10 @@
     <properties>
         <java.version>8</java.version>
     </properties>
+    <modules>
+        <module>google</module>
+        <module>twitter</module>
+    </modules>
     <dependencies>
 
     </dependencies>
