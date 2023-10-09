@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.github.scribejava</groupId>
             <artifactId>scribejava-apis</artifactId>
-            <version>8.3.0</version> <!-- 请检查是否有更新的版本 -->
+            <version>8.3.3</version> <!-- 请检查是否有更新的版本 -->
         </dependency>
 
         <dependency>
