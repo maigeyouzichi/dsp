@@ -26,19 +26,14 @@ public class TwitterService {
             OAuth10aService service = new ServiceBuilder(API_KEY)
                     .apiSecret(API_SECRET)
                     .build(TwitterApi.instance());
-
             // 构建Access Token
             OAuth1AccessToken accessToken = new OAuth1AccessToken(TOKEN, TOKEN_SECRET);
-
             // 创建一个请求并使用Access Token对其进行签名
             OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL);
             service.signRequest(accessToken, request);
-
             // 使用Spring的RestTemplate发送请求
-            String response = restTemplate.getForObject(request.getCompleteUrl(), String.class);
-
+            String response = service.execute(request).getBody();
             System.out.println("Twitter Response: " + response);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
