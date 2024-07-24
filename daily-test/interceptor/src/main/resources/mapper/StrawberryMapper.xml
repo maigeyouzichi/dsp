@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lz.fruit.mapper.StrawberryMapper">
+
+    <insert id="addWithXmlWithoutTime">
+        insert into strawberry (id, name) value (null,#{strawberry.name})
+    </insert>
+
+    <insert id="addWithXmlWithTime">
+        insert into strawberry value (null,#{strawberry.name},#{strawberry.createTime},#{strawberry.updateTime})
+    </insert>
+    <update id="updateByXmlWithTime">
+        update strawberry set name = #{strawberry.name} , update_time = #{strawberry.updateTime} where id = #{strawberry.id}
+    </update>
+    <update id="updateByXmlWithoutTime">
+        update strawberry set name = #{strawberry.name} where id = #{strawberry.id}
+    </update>
+</mapper>

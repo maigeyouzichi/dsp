@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lz.fruit.mapper.AppleMapper">
+
+    <insert id="addWithXmlWithoutTime">
+        insert into apple (id, name) value (null,#{apple.name})
+    </insert>
+    <insert id="addWithXmlWithTime">
+        insert into apple value (null,#{apple.name},#{apple.createTime},#{apple.updateTime});
+    </insert>
+    <update id="updateByXmlWithTime">
+        update apple set name = #{apple.name} , update_time = #{apple.updateTime} where id = #{apple.id}
+    </update>
+    <update id="updateByXmlWithoutTime">
+        update apple set name = #{apple.name} where id = #{apple.id}
+    </update>
+</mapper>
